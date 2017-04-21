@@ -21,7 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
          目前设置的是每次重新启动都要输入密码，所以启动时候的根控制器都是登录控制器。
          */
         window = UIWindow.init(frame: UIScreen.main.bounds)
-        window?.rootViewController = UINavigationController(rootViewController: CRMainViewController())
+        window?.rootViewController = CRBaseNavigationController(rootViewController: CRMainViewController())
         window?.makeKeyAndVisible()
         
         return true
@@ -57,7 +57,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     // MARK: - Core Data stack
 
-    @available(iOS 10.0, *)
     lazy var persistentContainer: NSPersistentContainer = {
         /*
          The persistent container for the application. This implementation
@@ -86,7 +85,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }()
 
     // MARK: - Core Data Saving support
-    @available(iOS 10.0, *)
     func saveContext () {
         let context = persistentContainer.viewContext
         if context.hasChanges {

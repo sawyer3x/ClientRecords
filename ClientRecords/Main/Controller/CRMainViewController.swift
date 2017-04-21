@@ -13,8 +13,9 @@ private let CRClientNameCellReuseIdentifier = "CRClientNameCellReuseIdentifier"
 
 class CRMainViewController: UIViewController {
 
-    var clientNameArr=["企划部","软件部","咨询部","人事部","后勤部","产品部"]
-
+    ///库存数据模型数组
+     var clientModels = [Client]()
+    
     //MARK: - xib链接控件
     @IBOutlet weak var tableView: UITableView!
     //MARK: - 其他方法
@@ -32,8 +33,6 @@ class CRMainViewController: UIViewController {
     }
 
     override func viewDidLoad() {
-        let clientVC = CRClientInfoViewController()
-        self.navigationController?.pushViewController(clientVC, animated: true)
         navigationItem.title = "亚洲红客户拜访纪录表"
         
         setupUI()
@@ -41,18 +40,26 @@ class CRMainViewController: UIViewController {
         setupTableView()
     }
     
-    fileprivate func setupUI() {
+    override func viewWillAppear(_ animated: Bool) {
+        clientModels.removeAll(keepingCapacity: true)
         
+        clientModels = HandleCoreData.getClients()
+
+        tableView.reloadData()
+    }
+    
+    fileprivate func setupUI() {
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(barButtonSystemItem: .add, target: self, action: #selector(CRMainViewController.addClient))
     }
     
     fileprivate func setupTableView() {
-        
         if tableView.responds(to:#selector(setter: UITableViewCell.separatorInset)) {
             tableView.separatorInset = UIEdgeInsets.zero
         }
         if tableView.responds(to:#selector(setter: UIView.layoutMargins)) {
             tableView.layoutMargins = UIEdgeInsets.zero
         }
+        
         //设置代理数据源
         tableView.delegate = self
         tableView.dataSource = self
@@ -64,36 +71,37 @@ class CRMainViewController: UIViewController {
         tableView.register(UINib(nibName: "CRClientNameTableViewCell", bundle: nil), forCellReuseIdentifier: CRClientNameCellReuseIdentifier)
     }
     
+    func addClient() {
+        let clientVC = CRClientInfoViewController.instance(type: .Add)
+
+        self.navigationController?.pushViewController(clientVC, animated: true)
+    }
+    
 }
 
 extension CRMainViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return clientNameArr.count
+        return clientModels.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         //获取重用Cell
         let cell = tableView.dequeueReusableCell(withIdentifier: CRClientNameCellReuseIdentifier) as! CRClientNameTableViewCell
+                
+        //取出模型
+        let model = clientModels[indexPath.row]
+//        cell.clientModel = model
+
+        cell.nameLabel.text = model.name
+        //设置代理
+//        cell.delegate = self
         
-        cell.nameLabel.text = clientNameArr[indexPath.row]
+//        cell.nameLabel.text = clientNameArr[indexPath.row]
         cell.arrowImage.image = UIImage(named: "arrow_image")
         
-//        addLine(view: cell.contentView)
-        
         return cell
-    }
-
-    func addLine(view: UIView) {
-        let line: UIView = UIView.init()
-        let view = view
-        view.addSubview(line)
-        line.layer.frame = CGRect(x: 0, y: view.frame.size.height - 1, width: UIScreen.main.bounds.width, height: 1)
-        print("width: \(view.frame.size.width)")
-        print("screen width: \(UIScreen.main.bounds.width)")
-
-        line.backgroundColor = UIColor.gray
     }
     
 }
@@ -107,6 +115,13 @@ extension CRMainViewController: UITableViewDelegate {
         if cell.responds(to: #selector(setter: UITableViewCell.separatorInset)) {
             cell.separatorInset = UIEdgeInsets.zero
         }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {        
+        let clientVC = CRClientInfoViewController.instance(type: .Edit)
+        clientVC.oneClient = clientModels[indexPath.row]
+        
+        self.navigationController?.pushViewController(clientVC, animated: true)
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
@@ -148,6 +163,5 @@ extension CRMainViewController: UITableViewDelegate {
     }
 
 }
-
 
 

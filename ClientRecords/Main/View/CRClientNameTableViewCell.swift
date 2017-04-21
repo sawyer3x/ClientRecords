@@ -17,5 +17,18 @@ class CRClientNameTableViewCell: UITableViewCell {
         super.awakeFromNib()
 
     }
+ 
+    ///接收的数据模型
+    var clientModel: CRClientInfoModel? {
+        didSet{
+            ///设置 客户名称
+            if clientModel?.name != "" {
+                nameLabel.text = clientModel?.name
+            }else {
+                nameLabel.text = ""
+            }
+
+        }
+    }
     
 }
