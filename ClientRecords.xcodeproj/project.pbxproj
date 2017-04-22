@@ -23,13 +23,13 @@
 		240D383A1EA74ECD00E0EA3E /* CRClientNameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240D38381EA74ECD00E0EA3E /* CRClientNameTableViewCell.swift */; };
 		240D383B1EA74ECD00E0EA3E /* CRClientNameTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 240D38391EA74ECD00E0EA3E /* CRClientNameTableViewCell.xib */; };
 		240D38531EA85D7F00E0EA3E /* Client+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240D38511EA85D7F00E0EA3E /* Client+CoreDataClass.swift */; };
-		240D38541EA85D7F00E0EA3E /* Client+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240D38521EA85D7F00E0EA3E /* Client+CoreDataProperties.swift */; };
 		240D38561EA85DEE00E0EA3E /* HandleCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240D38551EA85DEE00E0EA3E /* HandleCoreData.swift */; };
 		240D38581EA8954900E0EA3E /* CRClientInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240D38571EA8954900E0EA3E /* CRClientInfoModel.swift */; };
 		24F8887A1EA9AB5400DBEEE8 /* CRBaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F888791EA9AB5400DBEEE8 /* CRBaseNavigationController.swift */; };
 		24F888801EA9EBBB00DBEEE8 /* CRInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F8887E1EA9EBBB00DBEEE8 /* CRInputViewController.swift */; };
 		24F888811EA9EBBB00DBEEE8 /* CRInputViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 24F8887F1EA9EBBB00DBEEE8 /* CRInputViewController.xib */; };
 		24F888851EAA01B000DBEEE8 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 24F888841EAA01B000DBEEE8 /* Info.plist */; };
+		24F8888A1EAAEDD000DBEEE8 /* Client+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F888891EAAEDD000DBEEE8 /* Client+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,7 +71,6 @@
 		240D38381EA74ECD00E0EA3E /* CRClientNameTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CRClientNameTableViewCell.swift; sourceTree = "<group>"; };
 		240D38391EA74ECD00E0EA3E /* CRClientNameTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CRClientNameTableViewCell.xib; sourceTree = "<group>"; };
 		240D38511EA85D7F00E0EA3E /* Client+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Client+CoreDataClass.swift"; sourceTree = "<group>"; };
-		240D38521EA85D7F00E0EA3E /* Client+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Client+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		240D38551EA85DEE00E0EA3E /* HandleCoreData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HandleCoreData.swift; sourceTree = "<group>"; };
 		240D38571EA8954900E0EA3E /* CRClientInfoModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CRClientInfoModel.swift; sourceTree = "<group>"; };
 		24F888791EA9AB5400DBEEE8 /* CRBaseNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CRBaseNavigationController.swift; sourceTree = "<group>"; };
@@ -79,6 +78,8 @@
 		24F8887E1EA9EBBB00DBEEE8 /* CRInputViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CRInputViewController.swift; sourceTree = "<group>"; };
 		24F8887F1EA9EBBB00DBEEE8 /* CRInputViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CRInputViewController.xib; sourceTree = "<group>"; };
 		24F888841EAA01B000DBEEE8 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		24F888861EAAED4400DBEEE8 /* NewClientRecords.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = NewClientRecords.xcdatamodel; sourceTree = "<group>"; };
+		24F888891EAAEDD000DBEEE8 /* Client+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Client+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -255,7 +256,7 @@
 			isa = PBXGroup;
 			children = (
 				240D38511EA85D7F00E0EA3E /* Client+CoreDataClass.swift */,
-				240D38521EA85D7F00E0EA3E /* Client+CoreDataProperties.swift */,
+				24F888891EAAEDD000DBEEE8 /* Client+CoreDataProperties.swift */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -404,10 +405,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				240D38531EA85D7F00E0EA3E /* Client+CoreDataClass.swift in Sources */,
+				24F8888A1EAAEDD000DBEEE8 /* Client+CoreDataProperties.swift in Sources */,
 				240D38321EA70D7400E0EA3E /* CRTableViewCell.swift in Sources */,
 				240D38561EA85DEE00E0EA3E /* HandleCoreData.swift in Sources */,
 				240D38581EA8954900E0EA3E /* CRClientInfoModel.swift in Sources */,
-				240D38541EA85D7F00E0EA3E /* Client+CoreDataProperties.swift in Sources */,
 				240D383A1EA74ECD00E0EA3E /* CRClientNameTableViewCell.swift in Sources */,
 				240D37E81EA70C0700E0EA3E /* ClientRecords.xcdatamodeld in Sources */,
 				240D37E21EA70C0700E0EA3E /* ViewController.swift in Sources */,
@@ -689,9 +690,10 @@
 		240D37E61EA70C0700E0EA3E /* ClientRecords.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				24F888861EAAED4400DBEEE8 /* NewClientRecords.xcdatamodel */,
 				240D37E71EA70C0700E0EA3E /* ClientRecords.xcdatamodel */,
 			);
-			currentVersion = 240D37E71EA70C0700E0EA3E /* ClientRecords.xcdatamodel */;
+			currentVersion = 24F888861EAAED4400DBEEE8 /* NewClientRecords.xcdatamodel */;
 			path = ClientRecords.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

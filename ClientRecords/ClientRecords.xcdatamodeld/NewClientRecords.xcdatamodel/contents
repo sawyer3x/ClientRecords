@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="11759" systemVersion="15G1108" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Client" representedClassName=".Client" syncable="YES">
+        <attribute name="bussinessCard" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="clientType" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="cooperationInterests" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="majorProduct" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="market" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="marketSize" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="otherCooperators" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="priceRequirement" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="productShareOfMarket" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="productShareOfOtherCooperators" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="productShareOfRepertory" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="qualityRequirement" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="recorder" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="recordTime" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="remarks" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="repertorySize" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="serviceAttitude" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Client" positionX="-63" positionY="-18" width="128" height="330"/>
+    </elements>
+</model>

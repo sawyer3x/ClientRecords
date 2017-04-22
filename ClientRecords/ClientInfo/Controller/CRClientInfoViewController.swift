@@ -40,6 +40,14 @@ class CRClientInfoViewController: UIViewController {
     
     fileprivate var tableCell = CRTableViewCell()
 
+    ///图片选择器
+    fileprivate lazy var imagePickerController: UIImagePickerController? = {
+        let imageVC = UIImagePickerController()
+        imageVC.allowsEditing = true
+        imageVC.delegate = self
+        return imageVC
+    }()
+
     //MARK: - xib链接控件
     @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var clientNameTF: UITextField!    
@@ -54,6 +62,7 @@ class CRClientInfoViewController: UIViewController {
     
     @IBAction func clickAddCardBtn(_ sender: Any) {
         print("clickAddCardBtn")
+        showImagePickerController(.camera)
     }
     
     //MARK: - 其他方法
@@ -83,7 +92,7 @@ class CRClientInfoViewController: UIViewController {
         
         setupTableView()
     }
-        
+    
     fileprivate func clientToArrM() {
         clientInfoArrM.add(oneClient?.marketSize ?? "")
         clientInfoArrM.add(oneClient?.productShareOfMarket ?? "")
@@ -107,13 +116,6 @@ class CRClientInfoViewController: UIViewController {
         totalClientInfoArrM.add(oneClient?.market ?? "")
         totalClientInfoArrM.add(oneClient?.recordTime ?? "")
 
-        // 字符串 转 NSData
-//        let data:NSData = string.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: true)!
-        
-        // NSData 转 字符串
-//        let imageutf8String:String = String(data: oneClient?.bussinessCard as! Data, encoding: String.Encoding.utf8)!
-//        totalClientInfoArrM.add(imageutf8String)
-        
         for item in clientInfoArrM {
             totalClientInfoArrM.add(item)
         }
@@ -152,6 +154,18 @@ class CRClientInfoViewController: UIViewController {
         tableView.register(UINib(nibName: "CRTableViewCell", bundle: nil), forCellReuseIdentifier: CRDetailInfoCellReuseIdentifier)
     }
     
+    //MARK: - 展示图片选择界面
+    fileprivate func showImagePickerController(_ type: UIImagePickerControllerSourceType) {
+        if UIImagePickerController.isSourceTypeAvailable(type) {
+            //设置类型
+            imagePickerController?.sourceType = type
+            
+            //展示界面
+            navigationController!.present(imagePickerController!, animated: true, completion: {
+            })
+        }
+    }
+
     func clickSave() {
         // 1
         let optionMenu = UIAlertController(title: nil, message: "请选择", preferredStyle: .actionSheet)
@@ -192,7 +206,7 @@ class CRClientInfoViewController: UIViewController {
             imageData = nil
         }
         
-        HandleCoreData.addNewClient(name: "测试", market: "精品广场12", recordTime: "2017.04.21", bussinessCard: imageData, marketSize: "大", productShareOfMarket: "50%", repertorySize: "大", productShareOfRepertory: "50%", majorProduct: "布", clientType: "啊", qualityRequirement: "低", priceRequirement: "低", serviceAttitude: "很棒", cooperationInterests: "好", otherCooperators: "无", productShareOfOtherCooperators: "0", remarks: "无", recorder: "yzh")
+        HandleCoreData.addNewClient(id: "00001", name: "测试", market: "精品广场12", recordTime: "2017.04.21", bussinessCard: imageData, marketSize: "大", productShareOfMarket: "50%", repertorySize: "大", productShareOfRepertory: "50%", majorProduct: "布", clientType: "啊", qualityRequirement: "低", priceRequirement: "低", serviceAttitude: "很棒", cooperationInterests: "好", otherCooperators: "无", productShareOfOtherCooperators: "0", remarks: "无", recorder: "yzh")
     }
     
     func savePhoto() {
@@ -263,6 +277,27 @@ extension CRClientInfoViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return false
+    }
+
+}
+
+
+//MARK: - UIImagePickerControllerDelegate
+extension CRClientInfoViewController: UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        
+        //获取图片
+        let selectedImage = info["UIImagePickerControllerEditedImage"] as? UIImage
+        
+        //退出图片选择控制器控制器
+        picker.dismiss(animated: true) {
+        }
+        
+        //如果图片不为空，上传图片
+        if selectedImage != nil {
+            imageView.image = selectedImage
+        }
     }
 
 }

@@ -19,7 +19,7 @@ class HandleCoreData: NSObject {
      * 给实体对象赋值
      * 通过saveContext()保存实体对象
      */
-    class func addNewClient(name: String, market: String, recordTime: String, bussinessCard: NSData?, marketSize: String, productShareOfMarket: String, repertorySize: String, productShareOfRepertory: String, majorProduct: String, clientType: String, qualityRequirement: String, priceRequirement: String, serviceAttitude: String, cooperationInterests: String, otherCooperators: String, productShareOfOtherCooperators: String, remarks: String, recorder: String) {
+    class func addNewClient(id: String, name: String, market: String, recordTime: String, bussinessCard: NSData?, marketSize: String, productShareOfMarket: String, repertorySize: String, productShareOfRepertory: String, majorProduct: String, clientType: String, qualityRequirement: String, priceRequirement: String, serviceAttitude: String, cooperationInterests: String, otherCooperators: String, productShareOfOtherCooperators: String, remarks: String, recorder: String) {
         
         //获取数据上下文对象
         let app = UIApplication.shared.delegate as! AppDelegate
@@ -30,6 +30,7 @@ class HandleCoreData: NSObject {
         let oneClient = NSEntityDescription.insertNewObject(forEntityName: EntityName, into:context) as! Client
         
         //对象赋值
+        oneClient.id = id
         oneClient.name = name
         oneClient.market = market
         oneClient.recordTime = recordTime

@@ -2,7 +2,7 @@
 //  Client+CoreDataProperties.swift
 //  ClientRecords
 //
-//  Created by sawyer3x on 17/4/20.
+//  Created by sawyer3x on 17/4/22.
 //  Copyright © 2017年 sawyer3x. All rights reserved.
 //
 
@@ -34,5 +34,6 @@ extension Client {
     @NSManaged public var remarks: String?
     @NSManaged public var repertorySize: String?
     @NSManaged public var serviceAttitude: String?
+    @NSManaged public var id: String?
 
 }
