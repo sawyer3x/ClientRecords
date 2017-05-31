@@ -150,6 +150,7 @@ extension CRMainViewController: UITableViewDelegate {
                 
                 //删除操作
                 //////
+                HandleCoreData.deleteData(name: cell.nameLabel.text!)
             })
             alertVC.addAction(cancelAction)
             alertVC.addAction(deleteAction)

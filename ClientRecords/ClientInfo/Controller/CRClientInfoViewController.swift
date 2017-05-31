@@ -123,7 +123,7 @@ class CRClientInfoViewController: UIViewController {
     
     fileprivate func setupUI() {
         self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(barButtonSystemItem: .save, target: self, action: #selector(CRClientInfoViewController.clickSave))
-
+        
         clientNameTF.text = oneClient?.name ?? ""
         marketTF.text = oneClient?.market ?? ""
         recordTimeTF.text = oneClient?.recordTime ?? ""
@@ -165,7 +165,7 @@ class CRClientInfoViewController: UIViewController {
             })
         }
     }
-
+    
     func clickSave() {
         // 1
         let optionMenu = UIAlertController(title: nil, message: "请选择", preferredStyle: .actionSheet)
@@ -173,8 +173,14 @@ class CRClientInfoViewController: UIViewController {
         // 2
         let deleteAction = UIAlertAction(title: "保存信息", style: .default, handler: {
             (alert: UIAlertAction!) -> Void in
-            self.saveClientInfo()
-            print("File 保存信息")
+            switch self.controllerType! {
+            case .Edit:
+                self.updateClientInfo(client: self.oneClient!)
+                print("File 更新信息")
+            case .Add:
+                self.saveClientInfo()
+                print("File 保存信息")
+            }
         })
         let saveAction = UIAlertAction(title: "保存为图片", style: .default, handler: {
             (alert: UIAlertAction!) -> Void in
@@ -197,7 +203,7 @@ class CRClientInfoViewController: UIViewController {
         self.present(optionMenu, animated: true, completion: nil)
     }
     
-    func saveClientInfo() {
+    func updateClientInfo(client: Client) {
         let imageData: NSData!
         
         if imageView.image != nil {
@@ -206,7 +212,19 @@ class CRClientInfoViewController: UIViewController {
             imageData = nil
         }
         
-        HandleCoreData.addNewClient(id: "00001", name: "测试", market: "精品广场12", recordTime: "2017.04.21", bussinessCard: imageData, marketSize: "大", productShareOfMarket: "50%", repertorySize: "大", productShareOfRepertory: "50%", majorProduct: "布", clientType: "啊", qualityRequirement: "低", priceRequirement: "低", serviceAttitude: "很棒", cooperationInterests: "好", otherCooperators: "无", productShareOfOtherCooperators: "0", remarks: "无", recorder: "yzh")
+        HandleCoreData.updateData(aClient: client)
+    }
+    
+    func saveClientInfo() {
+        let imageData: NSData!
+        
+        if imageView.image != nil {
+            imageData = NSData(data: UIImagePNGRepresentation(imageView.image!)!)
+        } else {
+            imageData = nil
+        }
+                
+        HandleCoreData.addNewClient(name: "测试", market: "精品广场12", recordTime: "2017.04.21", bussinessCard: imageData, marketSize: "大", productShareOfMarket: "50%", repertorySize: "大", productShareOfRepertory: "50%", majorProduct: "布", clientType: "啊", qualityRequirement: "低", priceRequirement: "低", serviceAttitude: "很棒", cooperationInterests: "好", otherCooperators: "无", productShareOfOtherCooperators: "0", remarks: "无", recorder: "yzh")
     }
     
     func savePhoto() {
