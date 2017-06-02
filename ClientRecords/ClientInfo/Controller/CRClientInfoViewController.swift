@@ -32,9 +32,14 @@ class CRClientInfoViewController: UIViewController {
 
     var oneClient: Client?
     
-    fileprivate var clientInfoArrM = NSMutableArray()
-
-    var totalClientInfoArrM = NSMutableArray()
+    //多留一个""
+    lazy var clientInfoArrM: NSMutableArray? = {
+        let arrayM = [String].init(repeating: "", count: 17)
+//        for(int i = 0; i < 17; i++) {
+//            arrayM.addObjects(from: NSNull())
+//        }
+        return arrayM as? NSMutableArray
+    }()
     
     fileprivate var titleArr = ["门市规模", "产品份额", "仓库规模", "产品份额", "主营产品", "客户类型", "质量要求", "价格要求", "服务态度", "合作意愿", "其他合作者", "产品份额", "备注", "记录人"]
     
@@ -86,50 +91,42 @@ class CRClientInfoViewController: UIViewController {
         
         clientToArrM()
         
-        setupTotalArrM()
-        
         setupUI()
         
         setupTableView()
     }
     
     fileprivate func clientToArrM() {
-        clientInfoArrM.add(oneClient?.marketSize ?? "")
-        clientInfoArrM.add(oneClient?.productShareOfMarket ?? "")
-        clientInfoArrM.add(oneClient?.repertorySize ?? "")
-        clientInfoArrM.add(oneClient?.productShareOfRepertory ?? "")
-        clientInfoArrM.add(oneClient?.majorProduct ?? "")
-        clientInfoArrM.add(oneClient?.clientType ?? "")
-        clientInfoArrM.add(oneClient?.qualityRequirement ?? "")
-        clientInfoArrM.add(oneClient?.priceRequirement ?? "")
-        clientInfoArrM.add(oneClient?.serviceAttitude ?? "")
-        clientInfoArrM.add(oneClient?.cooperationInterests ?? "")
-        clientInfoArrM.add(oneClient?.otherCooperators ?? "")
-        clientInfoArrM.add(oneClient?.productShareOfOtherCooperators ?? "")
-        clientInfoArrM.add(oneClient?.remarks ?? "")
-        clientInfoArrM.add(oneClient?.recorder ?? "")
-    }
-    
-    fileprivate func setupTotalArrM() {
-        //TODO: - 不包括名片data
-        totalClientInfoArrM.add(oneClient?.name ?? "")
-        totalClientInfoArrM.add(oneClient?.market ?? "")
-        totalClientInfoArrM.add(oneClient?.recordTime ?? "")
-
-        for item in clientInfoArrM {
-            totalClientInfoArrM.add(item)
-        }
+        clientInfoArrM?.add(oneClient?.name ?? "")
+        clientInfoArrM?.add(oneClient?.market ?? "")
+        clientInfoArrM?.add(oneClient?.recordTime ?? "")
+        //TODO: - 不包含名片
+        clientInfoArrM?.add(oneClient?.marketSize ?? "")
+        clientInfoArrM?.add(oneClient?.productShareOfMarket ?? "")
+        clientInfoArrM?.add(oneClient?.repertorySize ?? "")
+        clientInfoArrM?.add(oneClient?.productShareOfRepertory ?? "")
+        clientInfoArrM?.add(oneClient?.majorProduct ?? "")
+        clientInfoArrM?.add(oneClient?.clientType ?? "")
+        clientInfoArrM?.add(oneClient?.qualityRequirement ?? "")
+        clientInfoArrM?.add(oneClient?.priceRequirement ?? "")
+        clientInfoArrM?.add(oneClient?.serviceAttitude ?? "")
+        clientInfoArrM?.add(oneClient?.cooperationInterests ?? "")
+        clientInfoArrM?.add(oneClient?.otherCooperators ?? "")
+        clientInfoArrM?.add(oneClient?.productShareOfOtherCooperators ?? "")
+        clientInfoArrM?.add(oneClient?.remarks ?? "")
+        clientInfoArrM?.add(oneClient?.recorder ?? "")
     }
     
     fileprivate func setupUI() {
         self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(barButtonSystemItem: .save, target: self, action: #selector(CRClientInfoViewController.clickSave))
         
-        clientNameTF.text = oneClient?.name ?? ""
-        marketTF.text = oneClient?.market ?? ""
-        recordTimeTF.text = oneClient?.recordTime ?? ""
+        //TODO: - 可能改成字典比较好
+        clientNameTF.text = clientInfoArrM?[0] as? String
+        marketTF.text = clientInfoArrM?[1] as? String
+        recordTimeTF.text = clientInfoArrM?[2] as? String
         //TODO: - imageview 名片
         if oneClient?.bussinessCard != nil {
-            imageView.image = UIImage(data: oneClient?.bussinessCard as! Data)
+            imageView.image = UIImage(data: oneClient?.bussinessCard! as! Data)
         } else {
             imageView.image = nil
         }
@@ -176,16 +173,16 @@ class CRClientInfoViewController: UIViewController {
             switch self.controllerType! {
             case .Edit:
                 self.updateClientInfo(client: self.oneClient!)
-                print("File 更新信息")
+                print("更新信息")
             case .Add:
                 self.saveClientInfo()
-                print("File 保存信息")
+                print("保存信息")
             }
         })
         let saveAction = UIAlertAction(title: "保存为图片", style: .default, handler: {
             (alert: UIAlertAction!) -> Void in
             self.savePhoto()
-            print("File 保存为图片")
+            print("保存为图片")
         })
         
         //
@@ -223,8 +220,195 @@ class CRClientInfoViewController: UIViewController {
         } else {
             imageData = nil
         }
-                
-        HandleCoreData.addNewClient(name: "测试", market: "精品广场12", recordTime: "2017.04.21", bussinessCard: imageData, marketSize: "大", productShareOfMarket: "50%", repertorySize: "大", productShareOfRepertory: "50%", majorProduct: "布", clientType: "啊", qualityRequirement: "低", priceRequirement: "低", serviceAttitude: "很棒", cooperationInterests: "好", otherCooperators: "无", productShareOfOtherCooperators: "0", remarks: "无", recorder: "yzh")
+        
+        if checkInfo() == true {
+            HandleCoreData.addNewClient(name: clientInfoArrM?[0] as! String,
+                                        market: clientInfoArrM?[1] as! String,
+                                        recordTime: clientInfoArrM?[2] as! String,
+                                        bussinessCard: imageData,
+                                        marketSize: clientInfoArrM?[3] as! String,
+                                        productShareOfMarket: clientInfoArrM?[4] as! String,
+                                        repertorySize: clientInfoArrM?[5] as! String,
+                                        productShareOfRepertory: clientInfoArrM?[6] as! String,
+                                        majorProduct: clientInfoArrM?[7] as! String,
+                                        clientType: clientInfoArrM?[8] as! String,
+                                        qualityRequirement: clientInfoArrM?[9] as! String,
+                                        priceRequirement: clientInfoArrM?[10] as! String,
+                                        serviceAttitude: clientInfoArrM?[11] as! String,
+                                        cooperationInterests: clientInfoArrM?[12] as! String,
+                                        otherCooperators: clientInfoArrM?[13] as! String,
+                                        productShareOfOtherCooperators: clientInfoArrM?[14] as! String,
+                                        remarks: clientInfoArrM?[15] as! String,
+                                        recorder: clientInfoArrM?[16] as! String)
+            
+            let alertController = UIAlertController(title: "保存成功!",
+                                                    message: nil, preferredStyle: .alert)
+            //显示提示框
+            self.present(alertController, animated: true, completion: nil)
+            //两秒钟后自动消失
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
+                self.presentedViewController?.dismiss(animated: false, completion: nil)
+            }
+
+        }
+    }
+    
+    func checkInfo() -> Bool{
+        if clientInfoArrM?[0] as! String == "" {
+            let alert = UIAlertController(title: "请填写客户名称", message: nil,
+                                          preferredStyle: .alert)
+            let action = UIAlertAction(title: "确定", style: .cancel, handler: nil)
+            alert.addAction(action)
+            self.present(alert, animated: true, completion: nil)
+            
+            return false
+        }
+        if clientInfoArrM?[1] as! String == "" {
+            let alert = UIAlertController(title: "请填写市场", message: nil,
+                                          preferredStyle: .alert)
+            let action = UIAlertAction(title: "确定", style: .cancel, handler: nil)
+            alert.addAction(action)
+            self.present(alert, animated: true, completion: nil)
+            
+            return false
+        }
+        if clientInfoArrM?[2] as! String == "" {
+            let alert = UIAlertController(title: "请填写记录时间", message: nil,
+                                          preferredStyle: .alert)
+            let action = UIAlertAction(title: "确定", style: .cancel, handler: nil)
+            alert.addAction(action)
+            self.present(alert, animated: true, completion: nil)
+            
+            return false
+        }
+        if clientInfoArrM?[3] as! String == "" {
+            let alert = UIAlertController(title: "请填写门市规模", message: nil,
+                                          preferredStyle: .alert)
+            let action = UIAlertAction(title: "确定", style: .cancel, handler: nil)
+            alert.addAction(action)
+            self.present(alert, animated: true, completion: nil)
+            
+            return false
+        }
+        if clientInfoArrM?[4] as! String == "" {
+            let alert = UIAlertController(title: "请填写产品份额", message: nil,
+                                          preferredStyle: .alert)
+            let action = UIAlertAction(title: "确定", style: .cancel, handler: nil)
+            alert.addAction(action)
+            self.present(alert, animated: true, completion: nil)
+            
+            return false
+        }
+        if clientInfoArrM?[5] as! String == "" {
+            let alert = UIAlertController(title: "请填写仓库规模", message: nil,
+                                          preferredStyle: .alert)
+            let action = UIAlertAction(title: "确定", style: .cancel, handler: nil)
+            alert.addAction(action)
+            self.present(alert, animated: true, completion: nil)
+            
+            return false
+        }
+        if clientInfoArrM?[6] as! String == "" {
+            let alert = UIAlertController(title: "请填写产品份额", message: nil,
+                                          preferredStyle: .alert)
+            let action = UIAlertAction(title: "确定", style: .cancel, handler: nil)
+            alert.addAction(action)
+            self.present(alert, animated: true, completion: nil)
+            
+            return false
+        }
+        if clientInfoArrM?[7] as! String == "" {
+            let alert = UIAlertController(title: "请填写主营产品", message: nil,
+                                          preferredStyle: .alert)
+            let action = UIAlertAction(title: "确定", style: .cancel, handler: nil)
+            alert.addAction(action)
+            self.present(alert, animated: true, completion: nil)
+            
+            return false
+        }
+        if clientInfoArrM?[8] as! String == "" {
+            let alert = UIAlertController(title: "请填写客户类型", message: nil,
+                                          preferredStyle: .alert)
+            let action = UIAlertAction(title: "确定", style: .cancel, handler: nil)
+            alert.addAction(action)
+            self.present(alert, animated: true, completion: nil)
+            
+            return false
+        }
+        if clientInfoArrM?[9] as! String == "" {
+            let alert = UIAlertController(title: "请填写质量要求", message: nil,
+                                          preferredStyle: .alert)
+            let action = UIAlertAction(title: "确定", style: .cancel, handler: nil)
+            alert.addAction(action)
+            self.present(alert, animated: true, completion: nil)
+            
+            return false
+        }
+        if clientInfoArrM?[10] as! String == "" {
+            let alert = UIAlertController(title: "请填写价格要求", message: nil,
+                                          preferredStyle: .alert)
+            let action = UIAlertAction(title: "确定", style: .cancel, handler: nil)
+            alert.addAction(action)
+            self.present(alert, animated: true, completion: nil)
+            
+            return false
+        }
+        if clientInfoArrM?[11] as! String == "" {
+            let alert = UIAlertController(title: "请填写服务态度", message: nil,
+                                          preferredStyle: .alert)
+            let action = UIAlertAction(title: "确定", style: .cancel, handler: nil)
+            alert.addAction(action)
+            self.present(alert, animated: true, completion: nil)
+            
+            return false
+        }
+        if clientInfoArrM?[12] as! String == "" {
+            let alert = UIAlertController(title: "请填写合作意愿", message: nil,
+                                          preferredStyle: .alert)
+            let action = UIAlertAction(title: "确定", style: .cancel, handler: nil)
+            alert.addAction(action)
+            self.present(alert, animated: true, completion: nil)
+            
+            return false
+        }
+        if clientInfoArrM?[13] as! String == "" {
+            let alert = UIAlertController(title: "请填写其他合作者", message: nil,
+                                          preferredStyle: .alert)
+            let action = UIAlertAction(title: "确定", style: .cancel, handler: nil)
+            alert.addAction(action)
+            self.present(alert, animated: true, completion: nil)
+            
+            return false
+        }
+        if clientInfoArrM?[14] as! String == "" {
+            let alert = UIAlertController(title: "请填写产品份额", message: nil,
+                                          preferredStyle: .alert)
+            let action = UIAlertAction(title: "确定", style: .cancel, handler: nil)
+            alert.addAction(action)
+            self.present(alert, animated: true, completion: nil)
+            
+            return false
+        }
+        if clientInfoArrM?[15] as! String == "" {
+            let alert = UIAlertController(title: "请填写备注", message: nil,
+                                          preferredStyle: .alert)
+            let action = UIAlertAction(title: "确定", style: .cancel, handler: nil)
+            alert.addAction(action)
+            self.present(alert, animated: true, completion: nil)
+            
+            return false
+        }
+        if clientInfoArrM?[16] as! String == "" {
+            let alert = UIAlertController(title: "请填写记录人", message: nil,
+                                          preferredStyle: .alert)
+            let action = UIAlertAction(title: "确定", style: .cancel, handler: nil)
+            alert.addAction(action)
+            self.present(alert, animated: true, completion: nil)
+            
+            return false
+        }
+        
+        return true
     }
     
     func savePhoto() {
@@ -265,7 +449,7 @@ extension CRClientInfoViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: CRDetailInfoCellReuseIdentifier) as! CRTableViewCell
         
         cell.titleLabel.text = titleArr[indexPath.row]
-        cell.detailLabel.text = clientInfoArrM[indexPath.row] as? String
+        cell.detailLabel.text = clientInfoArrM?[indexPath.row] as? String
         
         return cell
     }
@@ -334,15 +518,15 @@ extension CRClientInfoViewController: UITextFieldDelegate {
         
         switch textField {
         case clientNameTF:
-            totalClientInfoArrM[0] = str ?? totalClientInfoArrM[0]
+            clientInfoArrM?[0] = str ?? clientInfoArrM?[0] ?? ""
         case marketTF:
-            totalClientInfoArrM[1] = str ?? totalClientInfoArrM[1]
+            clientInfoArrM?[1] = str ?? clientInfoArrM?[1] ?? ""
         case recordTimeTF:
-            totalClientInfoArrM[2] = str ?? totalClientInfoArrM[2]          
+            clientInfoArrM?[2] = str ?? clientInfoArrM?[2] ?? ""
         default:
             break
         }
-        print("------total = \(totalClientInfoArrM)")
+        print("------total = \(String(describing: clientInfoArrM))")
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {

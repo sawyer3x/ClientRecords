@@ -29,7 +29,7 @@ class CRInputViewController: UIViewController {
     
     func save() {
         let vc = CRClientInfoViewController()
-        vc.totalClientInfoArrM[selectedRow!] = inputTF.text ?? ""
+        vc.clientInfoArrM?[selectedRow! + 3] = inputTF.text ?? ""
 
         let _ = navigationController?.popViewController(animated: true)
     }
