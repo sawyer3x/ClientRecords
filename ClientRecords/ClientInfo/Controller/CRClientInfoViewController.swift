@@ -29,19 +29,19 @@ class CRClientInfoViewController: UIViewController {
     //MARK: - 懒加载集合
     ///控制器类型
     fileprivate var controllerType: ClientInfoControllerType?
-
+    ///tableView标题、内容数组
+    fileprivate var titles: [[[String?]]]?
+    ///标题cell的数据模型
+    fileprivate var infoModels: [[CRTableInfoModel?]]?
+    
     var oneClient: Client?
     
-    //多留一个""
-    lazy var clientInfoArrM: NSMutableArray? = {
-        let arrayM = [String].init(repeating: "", count: 17)
-//        for(int i = 0; i < 17; i++) {
-//            arrayM.addObjects(from: NSNull())
-//        }
-        return arrayM as? NSMutableArray
-    }()
+    var isEdit: Bool? = false
     
-    fileprivate var titleArr = ["门市规模", "产品份额", "仓库规模", "产品份额", "主营产品", "客户类型", "质量要求", "价格要求", "服务态度", "合作意愿", "其他合作者", "产品份额", "备注", "记录人"]
+    //多留一个""
+    var clientInfoArrM: NSMutableArray? = ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""]
+    
+//    fileprivate var titleArr = ["门市规模", "产品份额", "仓库规模", "产品份额", "主营产品", "客户类型", "质量要求", "价格要求", "服务态度", "合作意愿", "其他合作者", "产品份额", "备注", "记录人"]
     
     fileprivate var tableCell = CRTableViewCell()
 
@@ -84,40 +84,85 @@ class CRClientInfoViewController: UIViewController {
         view = Bundle.main.loadNibNamed("CRClientInfoViewController", owner: self, options: nil)![0] as! UIView
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        self.tableView.reloadData()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationItem.title = "亚洲红客户拜访纪录表"
+        //设置主要数据
+        setupMainInfo()
         
-        clientToArrM()
-        
+        //初始化UI
         setupUI()
         
+        //初始化设置tableView
         setupTableView()
+    }
+
+    func setupMainInfo() {
+        self.titles = [[["客户", oneClient?.name ?? ""],
+                        ["市场", oneClient?.market ?? ""],
+                        ["记录时间", oneClient?.recordTime ?? ""]],
+                       [["门市规模", oneClient?.marketSize ?? ""],
+                        ["产品份额", oneClient?.productShareOfMarket ?? ""],
+                        ["仓库规模", oneClient?.repertorySize ?? ""],
+                        ["产品份额", oneClient?.productShareOfRepertory ?? ""],
+                        ["主营产品", oneClient?.majorProduct ?? ""],
+                        ["客户类型", oneClient?.clientType ?? ""],
+                        ["质量要求", oneClient?.qualityRequirement ?? ""],
+                        ["价格要求", oneClient?.priceRequirement ?? ""],
+                        ["服务态度", oneClient?.serviceAttitude ?? ""],
+                        ["合作意愿", oneClient?.cooperationInterests ?? ""],
+                        ["其他合作者", oneClient?.otherCooperators ?? ""],
+                        ["产品份额", oneClient?.productShareOfOtherCooperators ?? ""],
+                        ["备注", oneClient?.remarks ?? ""],
+                        ["记录人", oneClient?.recorder ?? ""]]]
+        
+        //创建数据模型数组
+        infoModels = [[CRTableInfoModel?]]()
+        
+        for section in 0...(titles!.count - 1) {
+            
+            //获取当前标题小数组
+            let strArrArr = titles![section] as [[String?]]
+            
+            //遍历数组，创建数据源数组
+            var modelArr =  [CRTableInfoModel?]()
+            for item in 0...(strArrArr.count - 1) {
+                let strArr = strArrArr[item]
+                let model = CRTableInfoModel.titleModel(title: strArr[0]!, content: strArr[1])
+                modelArr.append(model)
+            }
+            infoModels!.append(modelArr)
+        }
     }
     
     fileprivate func clientToArrM() {
-        clientInfoArrM?.add(oneClient?.name ?? "")
-        clientInfoArrM?.add(oneClient?.market ?? "")
-        clientInfoArrM?.add(oneClient?.recordTime ?? "")
+        clientInfoArrM?[0] = oneClient?.name ?? ""
+        clientInfoArrM?[0] = oneClient?.market ?? ""
+        clientInfoArrM?[0] = oneClient?.recordTime ?? ""
         //TODO: - 不包含名片
-        clientInfoArrM?.add(oneClient?.marketSize ?? "")
-        clientInfoArrM?.add(oneClient?.productShareOfMarket ?? "")
-        clientInfoArrM?.add(oneClient?.repertorySize ?? "")
-        clientInfoArrM?.add(oneClient?.productShareOfRepertory ?? "")
-        clientInfoArrM?.add(oneClient?.majorProduct ?? "")
-        clientInfoArrM?.add(oneClient?.clientType ?? "")
-        clientInfoArrM?.add(oneClient?.qualityRequirement ?? "")
-        clientInfoArrM?.add(oneClient?.priceRequirement ?? "")
-        clientInfoArrM?.add(oneClient?.serviceAttitude ?? "")
-        clientInfoArrM?.add(oneClient?.cooperationInterests ?? "")
-        clientInfoArrM?.add(oneClient?.otherCooperators ?? "")
-        clientInfoArrM?.add(oneClient?.productShareOfOtherCooperators ?? "")
-        clientInfoArrM?.add(oneClient?.remarks ?? "")
-        clientInfoArrM?.add(oneClient?.recorder ?? "")
+        clientInfoArrM?[0] = oneClient?.marketSize ?? ""
+        clientInfoArrM?[0] = oneClient?.productShareOfMarket ?? ""
+        clientInfoArrM?[0] = oneClient?.repertorySize ?? ""
+        clientInfoArrM?[0] = oneClient?.productShareOfRepertory ?? ""
+        clientInfoArrM?[0] = oneClient?.majorProduct ?? ""
+        clientInfoArrM?[0] = oneClient?.clientType ?? ""
+        clientInfoArrM?[0] = oneClient?.qualityRequirement ?? ""
+        clientInfoArrM?[0] = oneClient?.priceRequirement ?? ""
+        clientInfoArrM?[0] = oneClient?.serviceAttitude ?? ""
+        clientInfoArrM?[0] = oneClient?.cooperationInterests ?? ""
+        clientInfoArrM?[0] = oneClient?.otherCooperators ?? ""
+        clientInfoArrM?[0] = oneClient?.productShareOfOtherCooperators ?? ""
+        clientInfoArrM?[0] = oneClient?.remarks ?? ""
+        clientInfoArrM?[0] = oneClient?.recorder ?? ""
     }
     
     fileprivate func setupUI() {
+        navigationItem.title = "亚洲红客户拜访纪录表"
+
         self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(barButtonSystemItem: .save, target: self, action: #selector(CRClientInfoViewController.clickSave))
         
         //TODO: - 可能改成字典比较好
@@ -128,7 +173,7 @@ class CRClientInfoViewController: UIViewController {
         if oneClient?.bussinessCard != nil {
             imageView.image = UIImage(data: oneClient?.bussinessCard! as! Data)
         } else {
-            imageView.image = nil
+//            imageView.image = nil
         }
     }
     
@@ -146,6 +191,8 @@ class CRClientInfoViewController: UIViewController {
         
         tableView.estimatedRowHeight = 44
         tableView.rowHeight = UITableViewAutomaticDimension
+
+        tableView.showsVerticalScrollIndicator = false
         
         //注册cell
         tableView.register(UINib(nibName: "CRTableViewCell", bundle: nil), forCellReuseIdentifier: CRDetailInfoCellReuseIdentifier)
@@ -213,6 +260,8 @@ class CRClientInfoViewController: UIViewController {
     }
     
     func saveClientInfo() {
+        self.view.endEditing(true)
+        
         let imageData: NSData!
         
         if imageView.image != nil {
@@ -221,25 +270,25 @@ class CRClientInfoViewController: UIViewController {
             imageData = nil
         }
         
-        if checkInfo() == true {
-            HandleCoreData.addNewClient(name: clientInfoArrM?[0] as! String,
-                                        market: clientInfoArrM?[1] as! String,
-                                        recordTime: clientInfoArrM?[2] as! String,
+        //if checkInfo() == false {
+            HandleCoreData.addNewClient(name: (infoModels?[0][0]?.cellContent)!,
+                                        market: (infoModels?[0][1]?.cellContent)!,
+                                        recordTime: (infoModels?[0][2]?.cellContent)!,
                                         bussinessCard: imageData,
-                                        marketSize: clientInfoArrM?[3] as! String,
-                                        productShareOfMarket: clientInfoArrM?[4] as! String,
-                                        repertorySize: clientInfoArrM?[5] as! String,
-                                        productShareOfRepertory: clientInfoArrM?[6] as! String,
-                                        majorProduct: clientInfoArrM?[7] as! String,
-                                        clientType: clientInfoArrM?[8] as! String,
-                                        qualityRequirement: clientInfoArrM?[9] as! String,
-                                        priceRequirement: clientInfoArrM?[10] as! String,
-                                        serviceAttitude: clientInfoArrM?[11] as! String,
-                                        cooperationInterests: clientInfoArrM?[12] as! String,
-                                        otherCooperators: clientInfoArrM?[13] as! String,
-                                        productShareOfOtherCooperators: clientInfoArrM?[14] as! String,
-                                        remarks: clientInfoArrM?[15] as! String,
-                                        recorder: clientInfoArrM?[16] as! String)
+                                        marketSize: (infoModels?[1][0]?.cellContent)!,
+                                        productShareOfMarket: (infoModels?[1][1]?.cellContent)!,
+                                        repertorySize: (infoModels?[1][2]?.cellContent)!,
+                                        productShareOfRepertory: (infoModels?[1][3]?.cellContent)!,
+                                        majorProduct: (infoModels?[1][4]?.cellContent)!,
+                                        clientType: (infoModels?[1][5]?.cellContent)!,
+                                        qualityRequirement: (infoModels?[1][6]?.cellContent)!,
+                                        priceRequirement: (infoModels?[1][7]?.cellContent)!,
+                                        serviceAttitude: (infoModels?[1][8]?.cellContent)!,
+                                        cooperationInterests: (infoModels?[1][9]?.cellContent)!,
+                                        otherCooperators: (infoModels?[1][10]?.cellContent)!,
+                                        productShareOfOtherCooperators: (infoModels?[1][11]?.cellContent)!,
+                                        remarks: (infoModels?[1][12]?.cellContent)!,
+                                        recorder: (infoModels?[1][13]?.cellContent)!)
             
             let alertController = UIAlertController(title: "保存成功!",
                                                     message: nil, preferredStyle: .alert)
@@ -249,12 +298,11 @@ class CRClientInfoViewController: UIViewController {
             DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
                 self.presentedViewController?.dismiss(animated: false, completion: nil)
             }
-
-        }
+        //}
     }
     
     func checkInfo() -> Bool{
-        if clientInfoArrM?[0] as! String == "" {
+        if infoModels?[0][0]?.cellContent == "" {
             let alert = UIAlertController(title: "请填写客户名称", message: nil,
                                           preferredStyle: .alert)
             let action = UIAlertAction(title: "确定", style: .cancel, handler: nil)
@@ -263,7 +311,7 @@ class CRClientInfoViewController: UIViewController {
             
             return false
         }
-        if clientInfoArrM?[1] as! String == "" {
+        if infoModels?[0][1]?.cellContent == "" {
             let alert = UIAlertController(title: "请填写市场", message: nil,
                                           preferredStyle: .alert)
             let action = UIAlertAction(title: "确定", style: .cancel, handler: nil)
@@ -272,7 +320,7 @@ class CRClientInfoViewController: UIViewController {
             
             return false
         }
-        if clientInfoArrM?[2] as! String == "" {
+        if infoModels?[0][2]?.cellContent == "" {
             let alert = UIAlertController(title: "请填写记录时间", message: nil,
                                           preferredStyle: .alert)
             let action = UIAlertAction(title: "确定", style: .cancel, handler: nil)
@@ -281,7 +329,7 @@ class CRClientInfoViewController: UIViewController {
             
             return false
         }
-        if clientInfoArrM?[3] as! String == "" {
+        if infoModels?[1][0]?.cellContent == "" {
             let alert = UIAlertController(title: "请填写门市规模", message: nil,
                                           preferredStyle: .alert)
             let action = UIAlertAction(title: "确定", style: .cancel, handler: nil)
@@ -290,7 +338,7 @@ class CRClientInfoViewController: UIViewController {
             
             return false
         }
-        if clientInfoArrM?[4] as! String == "" {
+        if infoModels?[1][1]?.cellContent == "" {
             let alert = UIAlertController(title: "请填写产品份额", message: nil,
                                           preferredStyle: .alert)
             let action = UIAlertAction(title: "确定", style: .cancel, handler: nil)
@@ -299,7 +347,7 @@ class CRClientInfoViewController: UIViewController {
             
             return false
         }
-        if clientInfoArrM?[5] as! String == "" {
+        if infoModels?[1][2]?.cellContent  == "" {
             let alert = UIAlertController(title: "请填写仓库规模", message: nil,
                                           preferredStyle: .alert)
             let action = UIAlertAction(title: "确定", style: .cancel, handler: nil)
@@ -308,7 +356,7 @@ class CRClientInfoViewController: UIViewController {
             
             return false
         }
-        if clientInfoArrM?[6] as! String == "" {
+        if infoModels?[1][3]?.cellContent  == "" {
             let alert = UIAlertController(title: "请填写产品份额", message: nil,
                                           preferredStyle: .alert)
             let action = UIAlertAction(title: "确定", style: .cancel, handler: nil)
@@ -317,7 +365,7 @@ class CRClientInfoViewController: UIViewController {
             
             return false
         }
-        if clientInfoArrM?[7] as! String == "" {
+        if infoModels?[1][4]?.cellContent  == "" {
             let alert = UIAlertController(title: "请填写主营产品", message: nil,
                                           preferredStyle: .alert)
             let action = UIAlertAction(title: "确定", style: .cancel, handler: nil)
@@ -326,7 +374,7 @@ class CRClientInfoViewController: UIViewController {
             
             return false
         }
-        if clientInfoArrM?[8] as! String == "" {
+        if infoModels?[1][5]?.cellContent  == "" {
             let alert = UIAlertController(title: "请填写客户类型", message: nil,
                                           preferredStyle: .alert)
             let action = UIAlertAction(title: "确定", style: .cancel, handler: nil)
@@ -335,7 +383,7 @@ class CRClientInfoViewController: UIViewController {
             
             return false
         }
-        if clientInfoArrM?[9] as! String == "" {
+        if infoModels?[1][6]?.cellContent  == "" {
             let alert = UIAlertController(title: "请填写质量要求", message: nil,
                                           preferredStyle: .alert)
             let action = UIAlertAction(title: "确定", style: .cancel, handler: nil)
@@ -344,7 +392,7 @@ class CRClientInfoViewController: UIViewController {
             
             return false
         }
-        if clientInfoArrM?[10] as! String == "" {
+        if infoModels?[1][7]?.cellContent  == "" {
             let alert = UIAlertController(title: "请填写价格要求", message: nil,
                                           preferredStyle: .alert)
             let action = UIAlertAction(title: "确定", style: .cancel, handler: nil)
@@ -353,7 +401,7 @@ class CRClientInfoViewController: UIViewController {
             
             return false
         }
-        if clientInfoArrM?[11] as! String == "" {
+        if infoModels?[1][8]?.cellContent  == "" {
             let alert = UIAlertController(title: "请填写服务态度", message: nil,
                                           preferredStyle: .alert)
             let action = UIAlertAction(title: "确定", style: .cancel, handler: nil)
@@ -362,7 +410,7 @@ class CRClientInfoViewController: UIViewController {
             
             return false
         }
-        if clientInfoArrM?[12] as! String == "" {
+        if infoModels?[1][9]?.cellContent  == "" {
             let alert = UIAlertController(title: "请填写合作意愿", message: nil,
                                           preferredStyle: .alert)
             let action = UIAlertAction(title: "确定", style: .cancel, handler: nil)
@@ -371,7 +419,7 @@ class CRClientInfoViewController: UIViewController {
             
             return false
         }
-        if clientInfoArrM?[13] as! String == "" {
+        if infoModels?[1][10]?.cellContent  == "" {
             let alert = UIAlertController(title: "请填写其他合作者", message: nil,
                                           preferredStyle: .alert)
             let action = UIAlertAction(title: "确定", style: .cancel, handler: nil)
@@ -380,7 +428,7 @@ class CRClientInfoViewController: UIViewController {
             
             return false
         }
-        if clientInfoArrM?[14] as! String == "" {
+        if infoModels?[1][11]?.cellContent  == "" {
             let alert = UIAlertController(title: "请填写产品份额", message: nil,
                                           preferredStyle: .alert)
             let action = UIAlertAction(title: "确定", style: .cancel, handler: nil)
@@ -389,7 +437,7 @@ class CRClientInfoViewController: UIViewController {
             
             return false
         }
-        if clientInfoArrM?[15] as! String == "" {
+        if infoModels?[1][12]?.cellContent  == "" {
             let alert = UIAlertController(title: "请填写备注", message: nil,
                                           preferredStyle: .alert)
             let action = UIAlertAction(title: "确定", style: .cancel, handler: nil)
@@ -398,7 +446,7 @@ class CRClientInfoViewController: UIViewController {
             
             return false
         }
-        if clientInfoArrM?[16] as! String == "" {
+        if infoModels?[1][13]?.cellContent  == "" {
             let alert = UIAlertController(title: "请填写记录人", message: nil,
                                           preferredStyle: .alert)
             let action = UIAlertAction(title: "确定", style: .cancel, handler: nil)
@@ -436,7 +484,7 @@ class CRClientInfoViewController: UIViewController {
 extension CRClientInfoViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return titleArr.count
+        return infoModels![1].count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -448,8 +496,8 @@ extension CRClientInfoViewController: UITableViewDataSource {
         //获取重用Cell
         let cell = tableView.dequeueReusableCell(withIdentifier: CRDetailInfoCellReuseIdentifier) as! CRTableViewCell
         
-        cell.titleLabel.text = titleArr[indexPath.row]
-        cell.detailLabel.text = clientInfoArrM?[indexPath.row] as? String
+        //取出模型，传递模型
+        cell.titleModel = infoModels![1][indexPath.row]! as CRTableInfoModel
         
         return cell
     }
@@ -470,11 +518,11 @@ extension CRClientInfoViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("click the no.\(indexPath.row) row")
         
-        let inputVC = CRInputViewController()
-        inputVC.navTitle = titleArr[indexPath.row]
-        inputVC.selectedRow = indexPath.row
+        //取出模型，跳转编辑界面
+        let model = infoModels![1][indexPath.row]!
+        let editVC = CRInputViewController.editInfo(titleInfoModel: model)
         
-        navigationController?.pushViewController(inputVC, animated: true)
+        navigationController?.pushViewController(editVC, animated: true)
     }
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -518,15 +566,14 @@ extension CRClientInfoViewController: UITextFieldDelegate {
         
         switch textField {
         case clientNameTF:
-            clientInfoArrM?[0] = str ?? clientInfoArrM?[0] ?? ""
+            infoModels?[0][0]?.cellContent = str ?? (infoModels?[0][0]?.cellContent)!
         case marketTF:
-            clientInfoArrM?[1] = str ?? clientInfoArrM?[1] ?? ""
+            infoModels?[0][1]?.cellContent = str ?? (infoModels?[0][1]?.cellContent)!
         case recordTimeTF:
-            clientInfoArrM?[2] = str ?? clientInfoArrM?[2] ?? ""
+            infoModels?[0][2]?.cellContent = str ?? (infoModels?[0][2]?.cellContent)!
         default:
             break
         }
-        print("------total = \(String(describing: clientInfoArrM))")
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {

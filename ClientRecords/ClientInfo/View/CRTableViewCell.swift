@@ -17,30 +17,21 @@ class CRTableViewCell: UITableViewCell {
         super.awakeFromNib()
     }
     
-    ///接收的数据模型
-    var clientModel: CRClientInfoModel? {
+    var titleModel: CRTableInfoModel? {
         didSet{
-//            //设置 客户名称
-//            if clientModel?.name != "" {
-//                customerLabel.text = vistModel?.CGUnitName
-//            }else {
-//                customerLabel.text = "---"
-//            }
-//            
-//            //设置 日期
-//            if vistModel?.startDate != "" {
-//                dateLabel.text = vistModel?.startDate
-//            }else {
-//                dateLabel.text = "---"
-//            }
-//            
-//            //设置 回访内容
-//            if vistModel?.strContent != "" {
-//                contentLabel.text = vistModel?.strContent
-//            }else {
-//                contentLabel.text = "---"
-//            }
+            //设置标题
+            if titleModel!.cellTitle != "" {
+                titleLabel.text = titleModel!.cellTitle
+            }else {
+                titleLabel.text = "---"
+            }
+            
+            //设置内容
+            if titleModel!.cellContent != "" {
+                detailLabel.text = titleModel!.cellContent
+            }else {
+                detailLabel.text = "---"
+            }
         }
     }
-    
 }

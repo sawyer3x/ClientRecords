@@ -133,7 +133,7 @@ class HandleCoreData: NSObject {
         fetchRequest.entity = entity
         
         //设置查询条件
-        let predicate = NSPredicate.init(format: "name = aClient.name", "")
+        let predicate = NSPredicate.init(format: "name = \(aClient.name!)", "")
         fetchRequest.predicate = predicate
         
         //查询操作
@@ -199,7 +199,7 @@ class HandleCoreData: NSObject {
         fetchRequest.entity = entity
         
         //设置查询条件
-        let predicate = NSPredicate.init(format: "name = name", "")
+        let predicate = NSPredicate.init(format: "name = \(name)", "")
         fetchRequest.predicate = predicate
         
         //查询操作
