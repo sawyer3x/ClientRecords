@@ -2,7 +2,7 @@
 //  Client+CoreDataProperties.swift
 //  ClientRecords
 //
-//  Created by sawyer3x on 17/4/22.
+//  Created by sawyer3x on 2017/6/3.
 //  Copyright © 2017年 sawyer3x. All rights reserved.
 //
 
@@ -13,7 +13,7 @@ import CoreData
 extension Client {
 
     @nonobjc public class func fetchRequest() -> NSFetchRequest<Client> {
-        return NSFetchRequest<Client>(entityName: "Client");
+        return NSFetchRequest<Client>(entityName: "Client")
     }
 
     @NSManaged public var bussinessCard: NSData?
@@ -34,6 +34,5 @@ extension Client {
     @NSManaged public var remarks: String?
     @NSManaged public var repertorySize: String?
     @NSManaged public var serviceAttitude: String?
-    @NSManaged public var id: String?
 
 }
