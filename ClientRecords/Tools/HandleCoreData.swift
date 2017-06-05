@@ -116,7 +116,7 @@ class HandleCoreData: NSObject {
      * 将查询出来的数据进行修改,也即进行赋新值
      * 通过saveContext()保存修改后的实体对象
      */
-    class func updateData(aClient: Client){
+    class func updateClient(name: String, market: String, recordTime: String, bussinessCard: NSData?, marketSize: String, productShareOfMarket: String, repertorySize: String, productShareOfRepertory: String, majorProduct: String, clientType: String, qualityRequirement: String, priceRequirement: String, serviceAttitude: String, cooperationInterests: String, otherCooperators: String, productShareOfOtherCooperators: String, remarks: String, recorder: String){
         
         //获取数据上下文对象
         let app = UIApplication.shared.delegate as! AppDelegate
@@ -133,7 +133,7 @@ class HandleCoreData: NSObject {
         fetchRequest.entity = entity
         
         //设置查询条件
-        let predicate = NSPredicate.init(format: "name = \(aClient.name!)", "")
+        let predicate = NSPredicate.init(format: "name = \(name)", "")
         fetchRequest.predicate = predicate
         
         //查询操作
@@ -143,24 +143,24 @@ class HandleCoreData: NSObject {
             //遍历查询的结果
             for info:Client in fetchedObjects{
                 //更新信息
-                info.name = aClient.name
-                info.market = aClient.market
-                info.recordTime = aClient.recordTime
-                info.bussinessCard = aClient.bussinessCard ?? nil//TODO: - data nsdata???
-                info.marketSize = aClient.marketSize
-                info.productShareOfMarket = aClient.productShareOfMarket
-                info.repertorySize = aClient.repertorySize
-                info.productShareOfRepertory = aClient.productShareOfRepertory
-                info.majorProduct = aClient.majorProduct
-                info.clientType = aClient.clientType
-                info.qualityRequirement = aClient.qualityRequirement
-                info.priceRequirement = aClient.priceRequirement
-                info.serviceAttitude = aClient.serviceAttitude
-                info.cooperationInterests = aClient.cooperationInterests
-                info.otherCooperators = aClient.otherCooperators
-                info.productShareOfOtherCooperators = aClient.productShareOfOtherCooperators
-                info.remarks = aClient.remarks
-                info.recorder = aClient.recorder
+                info.name = name
+                info.market = market
+                info.recordTime = recordTime
+                info.bussinessCard = bussinessCard ?? nil//TODO: - data nsdata???
+                info.marketSize = marketSize
+                info.productShareOfMarket = productShareOfMarket
+                info.repertorySize = repertorySize
+                info.productShareOfRepertory = productShareOfRepertory
+                info.majorProduct = majorProduct
+                info.clientType = clientType
+                info.qualityRequirement = qualityRequirement
+                info.priceRequirement = priceRequirement
+                info.serviceAttitude = serviceAttitude
+                info.cooperationInterests = cooperationInterests
+                info.otherCooperators = otherCooperators
+                info.productShareOfOtherCooperators = productShareOfOtherCooperators
+                info.remarks = remarks
+                info.recorder = recorder
                 
                 //重新保存
                 app.saveContext()
@@ -182,7 +182,7 @@ class HandleCoreData: NSObject {
      * 通过context.delete删除查询出来的某一个对象
      * 通过saveContext()保存修改后的实体对象
      */
-    class func deleteData(name: String){
+    class func deleteClient(name: String){
         
         //获取数据上下文对象
         let app = UIApplication.shared.delegate as! AppDelegate

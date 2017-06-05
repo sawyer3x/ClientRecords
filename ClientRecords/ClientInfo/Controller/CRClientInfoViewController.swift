@@ -36,11 +36,10 @@ class CRClientInfoViewController: UIViewController {
     
     var oneClient: Client?
     
-    var isEdit: Bool? = false
-    
-    //多留一个""
-    var clientInfoArrM: NSMutableArray? = ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""]
-    
+    var clientName: String?
+    var clientMarket: String?
+    var recordTime: String?
+        
 //    fileprivate var titleArr = ["门市规模", "产品份额", "仓库规模", "产品份额", "主营产品", "客户类型", "质量要求", "价格要求", "服务态度", "合作意愿", "其他合作者", "产品份额", "备注", "记录人"]
     
     fileprivate var tableCell = CRTableViewCell()
@@ -102,23 +101,41 @@ class CRClientInfoViewController: UIViewController {
     }
 
     func setupMainInfo() {
-        self.titles = [[["客户", oneClient?.name ?? ""],
-                        ["市场", oneClient?.market ?? ""],
-                        ["记录时间", oneClient?.recordTime ?? ""]],
-                       [["门市规模", oneClient?.marketSize ?? ""],
-                        ["产品份额", oneClient?.productShareOfMarket ?? ""],
-                        ["仓库规模", oneClient?.repertorySize ?? ""],
-                        ["产品份额", oneClient?.productShareOfRepertory ?? ""],
-                        ["主营产品", oneClient?.majorProduct ?? ""],
-                        ["客户类型", oneClient?.clientType ?? ""],
-                        ["质量要求", oneClient?.qualityRequirement ?? ""],
-                        ["价格要求", oneClient?.priceRequirement ?? ""],
-                        ["服务态度", oneClient?.serviceAttitude ?? ""],
-                        ["合作意愿", oneClient?.cooperationInterests ?? ""],
-                        ["其他合作者", oneClient?.otherCooperators ?? ""],
-                        ["产品份额", oneClient?.productShareOfOtherCooperators ?? ""],
-                        ["备注", oneClient?.remarks ?? ""],
-                        ["记录人", oneClient?.recorder ?? ""]]]
+        let clientName = oneClient?.name ?? ""
+        let clientMarket = oneClient?.market ?? ""
+        let recordTime = oneClient?.recordTime ?? ""
+        let marketSize = oneClient?.marketSize ?? ""
+        let productShareOfMarket = oneClient?.productShareOfMarket ?? ""
+        let repertorySize = oneClient?.repertorySize ?? ""
+        let productShareOfRepertory = oneClient?.productShareOfRepertory ?? ""
+        let majorProduct = oneClient?.majorProduct ?? ""
+        let clientType = oneClient?.clientType ?? ""
+        let qualityRequirement = oneClient?.qualityRequirement ?? ""
+        let priceRequirement = oneClient?.priceRequirement ?? ""
+        let serviceAttitude = oneClient?.serviceAttitude ?? ""
+        let cooperationInterests = oneClient?.cooperationInterests ?? ""
+        let otherCooperators = oneClient?.otherCooperators ?? ""
+        let productShareOfOtherCooperators = oneClient?.productShareOfOtherCooperators ?? ""
+        let remarks = oneClient?.remarks ?? ""
+        let recorder = oneClient?.recorder ?? ""
+
+        self.titles = [[["客户", clientName],
+                        ["市场", clientMarket],
+                        ["记录时间", recordTime]],
+                       [["门市规模", marketSize],
+                        ["产品份额", productShareOfMarket],
+                        ["仓库规模", repertorySize],
+                        ["产品份额", productShareOfRepertory],
+                        ["主营产品", majorProduct],
+                        ["客户类型", clientType],
+                        ["质量要求", qualityRequirement],
+                        ["价格要求", priceRequirement],
+                        ["服务态度", serviceAttitude],
+                        ["合作意愿", cooperationInterests],
+                        ["其他合作者", otherCooperators],
+                        ["产品份额", productShareOfOtherCooperators],
+                        ["备注", remarks],
+                        ["记录人", recorder]]]
         
         //创建数据模型数组
         infoModels = [[CRTableInfoModel?]]()
@@ -139,36 +156,15 @@ class CRClientInfoViewController: UIViewController {
         }
     }
     
-    fileprivate func clientToArrM() {
-        clientInfoArrM?[0] = oneClient?.name ?? ""
-        clientInfoArrM?[0] = oneClient?.market ?? ""
-        clientInfoArrM?[0] = oneClient?.recordTime ?? ""
-        //TODO: - 不包含名片
-        clientInfoArrM?[0] = oneClient?.marketSize ?? ""
-        clientInfoArrM?[0] = oneClient?.productShareOfMarket ?? ""
-        clientInfoArrM?[0] = oneClient?.repertorySize ?? ""
-        clientInfoArrM?[0] = oneClient?.productShareOfRepertory ?? ""
-        clientInfoArrM?[0] = oneClient?.majorProduct ?? ""
-        clientInfoArrM?[0] = oneClient?.clientType ?? ""
-        clientInfoArrM?[0] = oneClient?.qualityRequirement ?? ""
-        clientInfoArrM?[0] = oneClient?.priceRequirement ?? ""
-        clientInfoArrM?[0] = oneClient?.serviceAttitude ?? ""
-        clientInfoArrM?[0] = oneClient?.cooperationInterests ?? ""
-        clientInfoArrM?[0] = oneClient?.otherCooperators ?? ""
-        clientInfoArrM?[0] = oneClient?.productShareOfOtherCooperators ?? ""
-        clientInfoArrM?[0] = oneClient?.remarks ?? ""
-        clientInfoArrM?[0] = oneClient?.recorder ?? ""
-    }
-    
     fileprivate func setupUI() {
         navigationItem.title = "亚洲红客户拜访纪录表"
 
         self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(barButtonSystemItem: .save, target: self, action: #selector(CRClientInfoViewController.clickSave))
         
         //TODO: - 可能改成字典比较好
-        clientNameTF.text = clientInfoArrM?[0] as? String
-        marketTF.text = clientInfoArrM?[1] as? String
-        recordTimeTF.text = clientInfoArrM?[2] as? String
+        clientNameTF.text = infoModels?[0][0]?.cellContent
+        marketTF.text = infoModels?[0][1]?.cellContent
+        recordTimeTF.text = infoModels?[0][2]?.cellContent
         //TODO: - imageview 名片
         if oneClient?.bussinessCard != nil {
             imageView.image = UIImage(data: oneClient?.bussinessCard! as! Data)
@@ -219,7 +215,7 @@ class CRClientInfoViewController: UIViewController {
             (alert: UIAlertAction!) -> Void in
             switch self.controllerType! {
             case .Edit:
-                self.updateClientInfo(client: self.oneClient!)
+                self.updateClientInfo()
                 print("更新信息")
             case .Add:
                 self.saveClientInfo()
@@ -247,7 +243,13 @@ class CRClientInfoViewController: UIViewController {
         self.present(optionMenu, animated: true, completion: nil)
     }
     
-    func updateClientInfo(client: Client) {
+    func updateClientInfo() {
+        self.view.endEditing(true)
+
+        updateClient()
+    }
+    
+    func updateClient() {
         let imageData: NSData!
         
         if imageView.image != nil {
@@ -256,7 +258,33 @@ class CRClientInfoViewController: UIViewController {
             imageData = nil
         }
         
-        HandleCoreData.updateData(aClient: client)
+        HandleCoreData.updateClient(name: clientName ?? (infoModels?[0][0]?.cellContent)!,
+                                    market: clientMarket ?? (infoModels?[0][1]?.cellContent)!,
+                                    recordTime: recordTime ?? (infoModels?[0][2]?.cellContent)!,
+                                    bussinessCard: imageData,
+                                    marketSize: (infoModels?[1][0]?.cellContent)!,
+                                    productShareOfMarket: (infoModels?[1][1]?.cellContent)!,
+                                    repertorySize: (infoModels?[1][2]?.cellContent)!,
+                                    productShareOfRepertory: (infoModels?[1][3]?.cellContent)!,
+                                    majorProduct: (infoModels?[1][4]?.cellContent)!,
+                                    clientType: (infoModels?[1][5]?.cellContent)!,
+                                    qualityRequirement: (infoModels?[1][6]?.cellContent)!,
+                                    priceRequirement: (infoModels?[1][7]?.cellContent)!,
+                                    serviceAttitude: (infoModels?[1][8]?.cellContent)!,
+                                    cooperationInterests: (infoModels?[1][9]?.cellContent)!,
+                                    otherCooperators: (infoModels?[1][10]?.cellContent)!,
+                                    productShareOfOtherCooperators: (infoModels?[1][11]?.cellContent)!,
+                                    remarks: (infoModels?[1][12]?.cellContent)!,
+                                    recorder: (infoModels?[1][13]?.cellContent)!)
+        
+        let alertController = UIAlertController(title: "修改成功!",
+                                                message: nil, preferredStyle: .alert)
+        //显示提示框
+        self.present(alertController, animated: true, completion: nil)
+        //两秒钟后自动消失
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
+            self.presentedViewController?.dismiss(animated: false, completion: nil)
+        }
     }
     
     func saveClientInfo() {
@@ -270,26 +298,27 @@ class CRClientInfoViewController: UIViewController {
             imageData = nil
         }
         
+        //TODO: - 暂时未作信息是否为空的判断
         //if checkInfo() == false {
-            HandleCoreData.addNewClient(name: (infoModels?[0][0]?.cellContent)!,
-                                        market: (infoModels?[0][1]?.cellContent)!,
-                                        recordTime: (infoModels?[0][2]?.cellContent)!,
-                                        bussinessCard: imageData,
-                                        marketSize: (infoModels?[1][0]?.cellContent)!,
-                                        productShareOfMarket: (infoModels?[1][1]?.cellContent)!,
-                                        repertorySize: (infoModels?[1][2]?.cellContent)!,
-                                        productShareOfRepertory: (infoModels?[1][3]?.cellContent)!,
-                                        majorProduct: (infoModels?[1][4]?.cellContent)!,
-                                        clientType: (infoModels?[1][5]?.cellContent)!,
-                                        qualityRequirement: (infoModels?[1][6]?.cellContent)!,
-                                        priceRequirement: (infoModels?[1][7]?.cellContent)!,
-                                        serviceAttitude: (infoModels?[1][8]?.cellContent)!,
-                                        cooperationInterests: (infoModels?[1][9]?.cellContent)!,
-                                        otherCooperators: (infoModels?[1][10]?.cellContent)!,
-                                        productShareOfOtherCooperators: (infoModels?[1][11]?.cellContent)!,
-                                        remarks: (infoModels?[1][12]?.cellContent)!,
-                                        recorder: (infoModels?[1][13]?.cellContent)!)
-            
+        HandleCoreData.addNewClient(name: (infoModels?[0][0]?.cellContent)!,
+                                    market: (infoModels?[0][1]?.cellContent)!,
+                                    recordTime: (infoModels?[0][2]?.cellContent)!,
+                                    bussinessCard: imageData,
+                                    marketSize: (infoModels?[1][0]?.cellContent)!,
+                                    productShareOfMarket: (infoModels?[1][1]?.cellContent)!,
+                                    repertorySize: (infoModels?[1][2]?.cellContent)!,
+                                    productShareOfRepertory: (infoModels?[1][3]?.cellContent)!,
+                                    majorProduct: (infoModels?[1][4]?.cellContent)!,
+                                    clientType: (infoModels?[1][5]?.cellContent)!,
+                                    qualityRequirement: (infoModels?[1][6]?.cellContent)!,
+                                    priceRequirement: (infoModels?[1][7]?.cellContent)!,
+                                    serviceAttitude: (infoModels?[1][8]?.cellContent)!,
+                                    cooperationInterests: (infoModels?[1][9]?.cellContent)!,
+                                    otherCooperators: (infoModels?[1][10]?.cellContent)!,
+                                    productShareOfOtherCooperators: (infoModels?[1][11]?.cellContent)!,
+                                    remarks: (infoModels?[1][12]?.cellContent)!,
+                                    recorder: (infoModels?[1][13]?.cellContent)!)
+        
             let alertController = UIAlertController(title: "保存成功!",
                                                     message: nil, preferredStyle: .alert)
             //显示提示框
@@ -301,6 +330,7 @@ class CRClientInfoViewController: UIViewController {
         //}
     }
     
+    //TODO: - 暂时未作信息是否为空的判断
     func checkInfo() -> Bool{
         if infoModels?[0][0]?.cellContent == "" {
             let alert = UIAlertController(title: "请填写客户名称", message: nil,
@@ -516,8 +546,6 @@ extension CRClientInfoViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("click the no.\(indexPath.row) row")
-        
         //取出模型，跳转编辑界面
         let model = infoModels![1][indexPath.row]!
         let editVC = CRInputViewController.editInfo(titleInfoModel: model)
@@ -528,7 +556,6 @@ extension CRClientInfoViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return false
     }
-
 }
 
 
@@ -566,11 +593,11 @@ extension CRClientInfoViewController: UITextFieldDelegate {
         
         switch textField {
         case clientNameTF:
-            infoModels?[0][0]?.cellContent = str ?? (infoModels?[0][0]?.cellContent)!
+            clientName = str ?? (infoModels?[0][0]?.cellContent)!
         case marketTF:
-            infoModels?[0][1]?.cellContent = str ?? (infoModels?[0][1]?.cellContent)!
+            clientMarket = str ?? (infoModels?[0][1]?.cellContent)!
         case recordTimeTF:
-            infoModels?[0][2]?.cellContent = str ?? (infoModels?[0][2]?.cellContent)!
+            recordTime = str ?? (infoModels?[0][2]?.cellContent)!
         default:
             break
         }
