@@ -36,6 +36,7 @@ class CRClientInfoViewController: UIViewController {
     
     var oneClient: Client?
     
+    var clientOriginName: String?
     var clientName: String?
     var clientMarket: String?
     var recordTime: String?
@@ -258,7 +259,12 @@ class CRClientInfoViewController: UIViewController {
             imageData = nil
         }
         
-        HandleCoreData.updateClient(name: clientName ?? (infoModels?[0][0]?.cellContent)!,
+        if clientName != (infoModels?[0][0]?.cellContent)! {
+            clientOriginName = (infoModels?[0][0]?.cellContent)!
+        }
+        
+        HandleCoreData.updateClient(originName: clientOriginName ?? (infoModels?[0][0]?.cellContent)!,
+                                    newName: clientName ?? (infoModels?[0][0]?.cellContent)!,
                                     market: clientMarket ?? (infoModels?[0][1]?.cellContent)!,
                                     recordTime: recordTime ?? (infoModels?[0][2]?.cellContent)!,
                                     bussinessCard: imageData,
@@ -300,9 +306,9 @@ class CRClientInfoViewController: UIViewController {
         
         //TODO: - 暂时未作信息是否为空的判断
         //if checkInfo() == false {
-        HandleCoreData.addNewClient(name: (infoModels?[0][0]?.cellContent)!,
-                                    market: (infoModels?[0][1]?.cellContent)!,
-                                    recordTime: (infoModels?[0][2]?.cellContent)!,
+        HandleCoreData.addNewClient(name: clientName ?? (infoModels?[0][0]?.cellContent)!,
+                                    market: clientMarket ?? (infoModels?[0][1]?.cellContent)!,
+                                    recordTime: recordTime ?? (infoModels?[0][2]?.cellContent)!,
                                     bussinessCard: imageData,
                                     marketSize: (infoModels?[1][0]?.cellContent)!,
                                     productShareOfMarket: (infoModels?[1][1]?.cellContent)!,

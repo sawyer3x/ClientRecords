@@ -116,7 +116,7 @@ class HandleCoreData: NSObject {
      * 将查询出来的数据进行修改,也即进行赋新值
      * 通过saveContext()保存修改后的实体对象
      */
-    class func updateClient(name: String, market: String, recordTime: String, bussinessCard: NSData?, marketSize: String, productShareOfMarket: String, repertorySize: String, productShareOfRepertory: String, majorProduct: String, clientType: String, qualityRequirement: String, priceRequirement: String, serviceAttitude: String, cooperationInterests: String, otherCooperators: String, productShareOfOtherCooperators: String, remarks: String, recorder: String){
+    class func updateClient(originName: String, newName: String, market: String, recordTime: String, bussinessCard: NSData?, marketSize: String, productShareOfMarket: String, repertorySize: String, productShareOfRepertory: String, majorProduct: String, clientType: String, qualityRequirement: String, priceRequirement: String, serviceAttitude: String, cooperationInterests: String, otherCooperators: String, productShareOfOtherCooperators: String, remarks: String, recorder: String){
         
         //获取数据上下文对象
         let app = UIApplication.shared.delegate as! AppDelegate
@@ -133,7 +133,7 @@ class HandleCoreData: NSObject {
         fetchRequest.entity = entity
         
         //设置查询条件
-        let predicate = NSPredicate.init(format: "name = \(name)", "")
+        let predicate = NSPredicate.init(format: "name = '\(originName)'", "")
         fetchRequest.predicate = predicate
         
         //查询操作
@@ -143,7 +143,7 @@ class HandleCoreData: NSObject {
             //遍历查询的结果
             for info:Client in fetchedObjects{
                 //更新信息
-                info.name = name
+                info.name = newName
                 info.market = market
                 info.recordTime = recordTime
                 info.bussinessCard = bussinessCard ?? nil//TODO: - data nsdata???
@@ -199,7 +199,7 @@ class HandleCoreData: NSObject {
         fetchRequest.entity = entity
         
         //设置查询条件
-        let predicate = NSPredicate.init(format: "name = \(name)", "")
+        let predicate = NSPredicate.init(format: "name = '\(name)'", "")
         fetchRequest.predicate = predicate
         
         //查询操作

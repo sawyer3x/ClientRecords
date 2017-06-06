@@ -52,12 +52,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ClientRecords/ClientInfo/Controller/CRClientInfoViewController.swift"
-            timestampString = "518327090.747826"
+            timestampString = "518435851.838664"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "257"
-            endingLineNumber = "257"
-            landmarkName = "clickSave()"
+            startingLineNumber = "258"
+            endingLineNumber = "258"
+            landmarkName = "updateClient()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -68,13 +68,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ClientRecords/ClientInfo/Controller/CRClientInfoViewController.swift"
-            timestampString = "518327239.661088"
+            timestampString = "518435851.838664"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "539"
-            endingLineNumber = "539"
-            landmarkName = "CRClientInfoViewController"
-            landmarkType = "4">
+            startingLineNumber = "545"
+            endingLineNumber = "545"
+            landmarkName = "tableView(_:willDisplay:forRowAt:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -84,45 +84,43 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ClientRecords/ClientInfo/Controller/CRClientInfoViewController.swift"
-            timestampString = "518327239.661088"
+            timestampString = "518435851.838664"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "540"
-            endingLineNumber = "540"
-            landmarkName = "CRClientInfoViewController"
-            landmarkType = "4">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ClientRecords/ClientInfo/Controller/CRClientInfoViewController.swift"
-            timestampString = "518327239.661088"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "608"
-            endingLineNumber = "608"
-            landmarkName = "CRClientInfoViewController"
-            landmarkType = "4">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ClientRecords/ClientInfo/Controller/CRClientInfoViewController.swift"
-            timestampString = "518327239.661088"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "613"
-            endingLineNumber = "613"
-            landmarkName = "textFieldShouldReturn(_:)"
+            startingLineNumber = "546"
+            endingLineNumber = "546"
+            landmarkName = "tableView(_:willDisplay:forRowAt:)"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ClientRecords/ClientInfo/Controller/CRClientInfoViewController.swift"
+            timestampString = "518435851.838664"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "614"
+            endingLineNumber = "614"
+            landmarkName = "touchesEnded(_:with:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ClientRecords/ClientInfo/Controller/CRClientInfoViewController.swift"
+            timestampString = "518435851.838664"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "619"
+            endingLineNumber = "619">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -137,7 +135,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "137"
             endingLineNumber = "137"
-            landmarkName = "updateClient(name:market:recordTime:bussinessCard:marketSize:productShareOfMarket:repertorySize:productShareOfRepertory:majorProduct:clientType:qualityRequirement:priceRequirement:serviceAttitude:cooperationInterests:otherCooperators:productShareOfOtherCooperators:remarks:recorder:)"
+            landmarkName = "updateClient(oldName:newName:market:recordTime:bussinessCard:marketSize:productShareOfMarket:repertorySize:productShareOfRepertory:majorProduct:clientType:qualityRequirement:priceRequirement:serviceAttitude:cooperationInterests:otherCooperators:productShareOfOtherCooperators:remarks:recorder:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -153,7 +151,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "140"
             endingLineNumber = "140"
-            landmarkName = "updateClient(name:market:recordTime:bussinessCard:marketSize:productShareOfMarket:repertorySize:productShareOfRepertory:majorProduct:clientType:qualityRequirement:priceRequirement:serviceAttitude:cooperationInterests:otherCooperators:productShareOfOtherCooperators:remarks:recorder:)"
+            landmarkName = "updateClient(oldName:newName:market:recordTime:bussinessCard:marketSize:productShareOfMarket:repertorySize:productShareOfRepertory:majorProduct:clientType:qualityRequirement:priceRequirement:serviceAttitude:cooperationInterests:otherCooperators:productShareOfOtherCooperators:remarks:recorder:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -164,27 +162,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ClientRecords/ClientInfo/Controller/CRClientInfoViewController.swift"
-            timestampString = "518327239.661088"
+            timestampString = "518435851.838664"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "273"
-            endingLineNumber = "273"
-            landmarkName = "updateClientInfo()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ClientRecords/ClientInfo/Controller/CRClientInfoViewController.swift"
-            timestampString = "518327239.661088"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "286"
-            endingLineNumber = "286"
+            startingLineNumber = "279"
+            endingLineNumber = "279"
             landmarkName = "updateClient()"
             landmarkType = "7">
             <Locations>
@@ -196,12 +178,12 @@
                   moduleName = "ClientRecords"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/sawyer/Desktop/%E4%BA%9A%E6%B4%B2%E7%BA%A2%E5%AE%A2%E6%88%B7%E8%AE%B0%E5%BD%95/ClientRecords/ClientInfo/Controller/CRClientInfoViewController.swift"
-                  timestampString = "518325992.049818"
+                  timestampString = "518434381.064362"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "281"
-                  endingLineNumber = "281"
-                  offsetFromSymbolStart = "879">
+                  startingLineNumber = "273"
+                  endingLineNumber = "273"
+                  offsetFromSymbolStart = "5556">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -211,12 +193,12 @@
                   moduleName = "ClientRecords"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/sawyer/Desktop/%E4%BA%9A%E6%B4%B2%E7%BA%A2%E5%AE%A2%E6%88%B7%E8%AE%B0%E5%BD%95/ClientRecords/ClientInfo/Controller/CRClientInfoViewController.swift"
-                  timestampString = "518325992.05108"
+                  timestampString = "518434381.065631"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "281"
-                  endingLineNumber = "281"
-                  offsetFromSymbolStart = "9355">
+                  startingLineNumber = "273"
+                  endingLineNumber = "273"
+                  offsetFromSymbolStart = "10102">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -228,11 +210,27 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ClientRecords/ClientInfo/Controller/CRClientInfoViewController.swift"
-            timestampString = "518327239.661088"
+            timestampString = "518435851.838664"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "287"
-            endingLineNumber = "287"
+            startingLineNumber = "292"
+            endingLineNumber = "292"
+            landmarkName = "updateClient()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ClientRecords/ClientInfo/Controller/CRClientInfoViewController.swift"
+            timestampString = "518435851.838664"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "293"
+            endingLineNumber = "293"
             landmarkName = "updateClient()"
             landmarkType = "7">
             <Locations>
@@ -244,27 +242,27 @@
                   moduleName = "ClientRecords"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/sawyer/Desktop/%E4%BA%9A%E6%B4%B2%E7%BA%A2%E5%AE%A2%E6%88%B7%E8%AE%B0%E5%BD%95/ClientRecords/ClientInfo/Controller/CRClientInfoViewController.swift"
-                  timestampString = "518325992.054044"
+                  timestampString = "518434381.071854"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "282"
-                  endingLineNumber = "282"
-                  offsetFromSymbolStart = "1250">
+                  startingLineNumber = "287"
+                  endingLineNumber = "287"
+                  offsetFromSymbolStart = "9919">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "ClientRecords.CRClientInfoViewController.updateClient () -&gt; ()"
+                  symbolName = "ClientRecords.CRClientInfoViewController.(updateClient () -&gt; ()).(closure #1)"
                   moduleName = "ClientRecords"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/sawyer/Desktop/%E4%BA%9A%E6%B4%B2%E7%BA%A2%E5%AE%A2%E6%88%B7%E8%AE%B0%E5%BD%95/ClientRecords/ClientInfo/Controller/CRClientInfoViewController.swift"
-                  timestampString = "518325992.055376"
+                  timestampString = "518434381.073166"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "282"
-                  endingLineNumber = "282"
-                  offsetFromSymbolStart = "9367">
+                  startingLineNumber = "287"
+                  endingLineNumber = "287"
+                  offsetFromSymbolStart = "470">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -276,173 +274,93 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ClientRecords/ClientInfo/Controller/CRClientInfoViewController.swift"
-            timestampString = "518327239.661088"
+            timestampString = "518435851.838664"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "288"
-            endingLineNumber = "288"
+            startingLineNumber = "294"
+            endingLineNumber = "294"
             landmarkName = "updateClient()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ClientRecords/ClientInfo/Controller/CRClientInfoViewController.swift"
+            timestampString = "518435851.838664"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "295"
+            endingLineNumber = "295"
+            landmarkName = "CRClientInfoViewController"
+            landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ClientRecords/ClientInfo/Controller/CRClientInfoViewController.swift"
+            timestampString = "518435851.838664"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "296"
+            endingLineNumber = "296"
+            landmarkName = "saveClientInfo()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ClientRecords/ClientInfo/Controller/CRClientInfoViewController.swift"
+            timestampString = "518435851.838664"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "309"
+            endingLineNumber = "309"
+            landmarkName = "saveClientInfo()"
             landmarkType = "7">
             <Locations>
                <Location
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "ClientRecords.CRClientInfoViewController.updateClient () -&gt; ()"
+                  symbolName = "ClientRecords.CRClientInfoViewController.saveClientInfo () -&gt; ()"
                   moduleName = "ClientRecords"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/sawyer/Desktop/%E4%BA%9A%E6%B4%B2%E7%BA%A2%E5%AE%A2%E6%88%B7%E8%AE%B0%E5%BD%95/ClientRecords/ClientInfo/Controller/CRClientInfoViewController.swift"
-                  timestampString = "518326021.157459"
+                  timestampString = "518434381.084517"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "283"
-                  endingLineNumber = "283"
-                  offsetFromSymbolStart = "1580">
+                  startingLineNumber = "303"
+                  endingLineNumber = "303"
+                  offsetFromSymbolStart = "1101">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "ClientRecords.CRClientInfoViewController.updateClient () -&gt; ()"
+                  symbolName = "ClientRecords.CRClientInfoViewController.(saveClientInfo () -&gt; ()).(implicit closure #1)"
                   moduleName = "ClientRecords"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/sawyer/Desktop/%E4%BA%9A%E6%B4%B2%E7%BA%A2%E5%AE%A2%E6%88%B7%E8%AE%B0%E5%BD%95/ClientRecords/ClientInfo/Controller/CRClientInfoViewController.swift"
-                  timestampString = "518326021.159145"
+                  timestampString = "518434381.08579"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "283"
-                  endingLineNumber = "283"
-                  offsetFromSymbolStart = "9375">
+                  startingLineNumber = "303"
+                  endingLineNumber = "303"
+                  offsetFromSymbolStart = "19">
                </Location>
             </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ClientRecords/ClientInfo/Controller/CRClientInfoViewController.swift"
-            timestampString = "518327239.661088"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "289"
-            endingLineNumber = "289"
-            landmarkName = "updateClient()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ClientRecords/ClientInfo/Controller/CRClientInfoViewController.swift"
-            timestampString = "518327239.661088"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "290"
-            endingLineNumber = "290"
-            landmarkName = "updateClient()"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "ClientRecords.CRClientInfoViewController.updateClient () -&gt; ()"
-                  moduleName = "ClientRecords"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/sawyer/Desktop/%E4%BA%9A%E6%B4%B2%E7%BA%A2%E5%AE%A2%E6%88%B7%E8%AE%B0%E5%BD%95/ClientRecords/ClientInfo/Controller/CRClientInfoViewController.swift"
-                  timestampString = "518326029.17095"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "285"
-                  endingLineNumber = "285"
-                  offsetFromSymbolStart = "1950">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "ClientRecords.CRClientInfoViewController.updateClient () -&gt; ()"
-                  moduleName = "ClientRecords"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/sawyer/Desktop/%E4%BA%9A%E6%B4%B2%E7%BA%A2%E5%AE%A2%E6%88%B7%E8%AE%B0%E5%BD%95/ClientRecords/ClientInfo/Controller/CRClientInfoViewController.swift"
-                  timestampString = "518326029.172671"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "285"
-                  endingLineNumber = "285"
-                  offsetFromSymbolStart = "9383">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ClientRecords/ClientInfo/Controller/CRClientInfoViewController.swift"
-            timestampString = "518327239.661088"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "303"
-            endingLineNumber = "303"
-            landmarkName = "updateClient()"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "ClientRecords.CRClientInfoViewController.updateClient () -&gt; ()"
-                  moduleName = "ClientRecords"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/sawyer/Desktop/%E4%BA%9A%E6%B4%B2%E7%BA%A2%E5%AE%A2%E6%88%B7%E8%AE%B0%E5%BD%95/ClientRecords/ClientInfo/Controller/CRClientInfoViewController.swift"
-                  timestampString = "518326032.681472"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "298"
-                  endingLineNumber = "298"
-                  offsetFromSymbolStart = "6556">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "ClientRecords.CRClientInfoViewController.updateClient () -&gt; ()"
-                  moduleName = "ClientRecords"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/sawyer/Desktop/%E4%BA%9A%E6%B4%B2%E7%BA%A2%E5%AE%A2%E6%88%B7%E8%AE%B0%E5%BD%95/ClientRecords/ClientInfo/Controller/CRClientInfoViewController.swift"
-                  timestampString = "518326032.683221"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "298"
-                  endingLineNumber = "298"
-                  offsetFromSymbolStart = "9487">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ClientRecords/ClientInfo/Controller/CRClientInfoViewController.swift"
-            timestampString = "518327239.661088"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "305"
-            endingLineNumber = "305"
-            landmarkName = "updateClient()"
-            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -457,7 +375,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "144"
             endingLineNumber = "144"
-            landmarkName = "updateClient(name:market:recordTime:bussinessCard:marketSize:productShareOfMarket:repertorySize:productShareOfRepertory:majorProduct:clientType:qualityRequirement:priceRequirement:serviceAttitude:cooperationInterests:otherCooperators:productShareOfOtherCooperators:remarks:recorder:)"
+            landmarkName = "updateClient(oldName:newName:market:recordTime:bussinessCard:marketSize:productShareOfMarket:repertorySize:productShareOfRepertory:majorProduct:clientType:qualityRequirement:priceRequirement:serviceAttitude:cooperationInterests:otherCooperators:productShareOfOtherCooperators:remarks:recorder:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -473,7 +391,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "146"
             endingLineNumber = "146"
-            landmarkName = "updateClient(name:market:recordTime:bussinessCard:marketSize:productShareOfMarket:repertorySize:productShareOfRepertory:majorProduct:clientType:qualityRequirement:priceRequirement:serviceAttitude:cooperationInterests:otherCooperators:productShareOfOtherCooperators:remarks:recorder:)"
+            landmarkName = "updateClient(oldName:newName:market:recordTime:bussinessCard:marketSize:productShareOfMarket:repertorySize:productShareOfRepertory:majorProduct:clientType:qualityRequirement:priceRequirement:serviceAttitude:cooperationInterests:otherCooperators:productShareOfOtherCooperators:remarks:recorder:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -489,7 +407,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "166"
             endingLineNumber = "166"
-            landmarkName = "updateClient(name:market:recordTime:bussinessCard:marketSize:productShareOfMarket:repertorySize:productShareOfRepertory:majorProduct:clientType:qualityRequirement:priceRequirement:serviceAttitude:cooperationInterests:otherCooperators:productShareOfOtherCooperators:remarks:recorder:)"
+            landmarkName = "updateClient(oldName:newName:market:recordTime:bussinessCard:marketSize:productShareOfMarket:repertorySize:productShareOfRepertory:majorProduct:clientType:qualityRequirement:priceRequirement:serviceAttitude:cooperationInterests:otherCooperators:productShareOfOtherCooperators:remarks:recorder:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -505,7 +423,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "163"
             endingLineNumber = "163"
-            landmarkName = "updateClient(name:market:recordTime:bussinessCard:marketSize:productShareOfMarket:repertorySize:productShareOfRepertory:majorProduct:clientType:qualityRequirement:priceRequirement:serviceAttitude:cooperationInterests:otherCooperators:productShareOfOtherCooperators:remarks:recorder:)"
+            landmarkName = "updateClient(oldName:newName:market:recordTime:bussinessCard:marketSize:productShareOfMarket:repertorySize:productShareOfRepertory:majorProduct:clientType:qualityRequirement:priceRequirement:serviceAttitude:cooperationInterests:otherCooperators:productShareOfOtherCooperators:remarks:recorder:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -516,43 +434,43 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ClientRecords/ClientInfo/Controller/CRClientInfoViewController.swift"
-            timestampString = "518327239.661088"
+            timestampString = "518435851.838664"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "310"
-            endingLineNumber = "310"
-            landmarkName = "updateClient()"
+            startingLineNumber = "316"
+            endingLineNumber = "316"
+            landmarkName = "saveClientInfo()"
             landmarkType = "7">
             <Locations>
                <Location
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "ClientRecords.CRClientInfoViewController.updateClient () -&gt; ()"
+                  symbolName = "ClientRecords.CRClientInfoViewController.saveClientInfo () -&gt; ()"
                   moduleName = "ClientRecords"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/sawyer/Desktop/%E4%BA%9A%E6%B4%B2%E7%BA%A2%E5%AE%A2%E6%88%B7%E8%AE%B0%E5%BD%95/ClientRecords/ClientInfo/Controller/CRClientInfoViewController.swift"
-                  timestampString = "518326086.262601"
+                  timestampString = "518434381.099301"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "305"
-                  endingLineNumber = "305"
-                  offsetFromSymbolStart = "8994">
+                  startingLineNumber = "310"
+                  endingLineNumber = "310"
+                  offsetFromSymbolStart = "4003">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "ClientRecords.CRClientInfoViewController.(updateClient () -&gt; ()).(closure #1)"
+                  symbolName = "ClientRecords.CRClientInfoViewController.saveClientInfo () -&gt; ()"
                   moduleName = "ClientRecords"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/sawyer/Desktop/%E4%BA%9A%E6%B4%B2%E7%BA%A2%E5%AE%A2%E6%88%B7%E8%AE%B0%E5%BD%95/ClientRecords/ClientInfo/Controller/CRClientInfoViewController.swift"
-                  timestampString = "518326086.26424"
+                  timestampString = "518434381.100577"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "306"
-                  endingLineNumber = "306"
-                  offsetFromSymbolStart = "15">
+                  startingLineNumber = "310"
+                  endingLineNumber = "310"
+                  offsetFromSymbolStart = "10279">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -564,13 +482,93 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ClientRecords/ClientInfo/Controller/CRClientInfoViewController.swift"
-            timestampString = "518327239.661088"
+            timestampString = "518435851.838664"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "311"
-            endingLineNumber = "311"
+            startingLineNumber = "317"
+            endingLineNumber = "317"
+            landmarkName = "saveClientInfo()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ClientRecords.CRClientInfoViewController.saveClientInfo () -&gt; ()"
+                  moduleName = "ClientRecords"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sawyer/Desktop/%E4%BA%9A%E6%B4%B2%E7%BA%A2%E5%AE%A2%E6%88%B7%E8%AE%B0%E5%BD%95/ClientRecords/ClientInfo/Controller/CRClientInfoViewController.swift"
+                  timestampString = "518434381.103472"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "311"
+                  endingLineNumber = "311"
+                  offsetFromSymbolStart = "4357">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ClientRecords.CRClientInfoViewController.saveClientInfo () -&gt; ()"
+                  moduleName = "ClientRecords"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sawyer/Desktop/%E4%BA%9A%E6%B4%B2%E7%BA%A2%E5%AE%A2%E6%88%B7%E8%AE%B0%E5%BD%95/ClientRecords/ClientInfo/Controller/CRClientInfoViewController.swift"
+                  timestampString = "518434381.104737"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "311"
+                  endingLineNumber = "311"
+                  offsetFromSymbolStart = "10287">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ClientRecords/ClientInfo/Controller/CRClientInfoViewController.swift"
+            timestampString = "518435851.838664"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "266"
+            endingLineNumber = "266"
             landmarkName = "updateClient()"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ClientRecords.CRClientInfoViewController.updateClient () -&gt; ()"
+                  moduleName = "ClientRecords"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sawyer/Desktop/%E4%BA%9A%E6%B4%B2%E7%BA%A2%E5%AE%A2%E6%88%B7%E8%AE%B0%E5%BD%95/ClientRecords/ClientInfo/Controller/CRClientInfoViewController.swift"
+                  timestampString = "518434378.931741"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "261"
+                  endingLineNumber = "261"
+                  offsetFromSymbolStart = "890">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ClientRecords.CRClientInfoViewController.(updateClient () -&gt; ()).(implicit closure #1)"
+                  moduleName = "ClientRecords"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sawyer/Desktop/%E4%BA%9A%E6%B4%B2%E7%BA%A2%E5%AE%A2%E6%88%B7%E8%AE%B0%E5%BD%95/ClientRecords/ClientInfo/Controller/CRClientInfoViewController.swift"
+                  timestampString = "518434378.93337"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "261"
+                  endingLineNumber = "261"
+                  offsetFromSymbolStart = "19">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
