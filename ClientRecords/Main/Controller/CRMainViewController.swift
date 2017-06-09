@@ -13,6 +13,8 @@ private let CRClientNameCellReuseIdentifier = "CRClientNameCellReuseIdentifier"
 
 class CRMainViewController: UIViewController {
 
+    let refreshControl = UIRefreshControl.init()
+    
     ///库存数据模型数组
      var clientModels = [Client]()
     
@@ -38,14 +40,26 @@ class CRMainViewController: UIViewController {
         setupUI()
         
         setupTableView()
+        
+        //添加刷新
+        refreshControl.addTarget(self, action: #selector(CRMainViewController.refreshData), for: UIControlEvents.valueChanged)
+        refreshControl.attributedTitle = NSAttributedString(string: "刷新刷新刷新")
+        tableView.addSubview(refreshControl)
+        refreshData()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
+    func refreshData() {
         clientModels.removeAll(keepingCapacity: true)
         
         clientModels = HandleCoreData.getClients()
-
+        
         tableView.reloadData()
+        
+        refreshControl.endRefreshing()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        refreshData()
     }
     
     fileprivate func setupUI() {
@@ -150,7 +164,18 @@ extension CRMainViewController: UITableViewDelegate {
                 
                 //删除操作
                 //////
+
                 HandleCoreData.deleteClient(name: cell.nameLabel.text!)
+                
+                let alertController = UIAlertController(title: "删除成功!",
+                                                        message: nil, preferredStyle: .alert)
+                //显示提示框
+                self.present(alertController, animated: true, completion: self.refreshData)
+        
+                //0.8秒钟后自动消失
+                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.8) {
+                    self.presentedViewController?.dismiss(animated: false, completion: nil)
+                }
             })
             alertVC.addAction(cancelAction)
             alertVC.addAction(deleteAction)

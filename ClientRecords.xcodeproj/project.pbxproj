@@ -25,6 +25,8 @@
 		240D38531EA85D7F00E0EA3E /* Client+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240D38511EA85D7F00E0EA3E /* Client+CoreDataClass.swift */; };
 		240D38561EA85DEE00E0EA3E /* HandleCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240D38551EA85DEE00E0EA3E /* HandleCoreData.swift */; };
 		240D38581EA8954900E0EA3E /* CRClientInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240D38571EA8954900E0EA3E /* CRClientInfoModel.swift */; };
+		2417E6CA1EEA845D00981C59 /* CRClientInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2417E6C91EEA845C00981C59 /* CRClientInfoView.swift */; };
+		2417E6CC1EEA847900981C59 /* CRClientInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2417E6CB1EEA847900981C59 /* CRClientInfoView.xib */; };
 		241BE4A81EE29B0B0055B6C1 /* CRTableInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241BE4A71EE29B0B0055B6C1 /* CRTableInfoModel.swift */; };
 		241BE4AA1EE2B3970055B6C1 /* Client+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241BE4A91EE2B3970055B6C1 /* Client+CoreDataProperties.swift */; };
 		24F8887A1EA9AB5400DBEEE8 /* CRBaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F888791EA9AB5400DBEEE8 /* CRBaseNavigationController.swift */; };
@@ -73,6 +75,8 @@
 		240D38511EA85D7F00E0EA3E /* Client+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Client+CoreDataClass.swift"; sourceTree = "<group>"; };
 		240D38551EA85DEE00E0EA3E /* HandleCoreData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HandleCoreData.swift; sourceTree = "<group>"; };
 		240D38571EA8954900E0EA3E /* CRClientInfoModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CRClientInfoModel.swift; sourceTree = "<group>"; };
+		2417E6C91EEA845C00981C59 /* CRClientInfoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CRClientInfoView.swift; sourceTree = "<group>"; };
+		2417E6CB1EEA847900981C59 /* CRClientInfoView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CRClientInfoView.xib; sourceTree = "<group>"; };
 		241BE4A71EE29B0B0055B6C1 /* CRTableInfoModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CRTableInfoModel.swift; sourceTree = "<group>"; };
 		241BE4A91EE2B3970055B6C1 /* Client+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Client+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		24F888791EA9AB5400DBEEE8 /* CRBaseNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CRBaseNavigationController.swift; sourceTree = "<group>"; };
@@ -235,6 +239,8 @@
 			children = (
 				240D382E1EA70D7400E0EA3E /* CRTableViewCell.swift */,
 				240D382F1EA70D7400E0EA3E /* CRTableViewCell.xib */,
+				2417E6C91EEA845C00981C59 /* CRClientInfoView.swift */,
+				2417E6CB1EEA847900981C59 /* CRClientInfoView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -332,7 +338,7 @@
 				TargetAttributes = {
 					240D37DB1EA70C0700E0EA3E = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = 8JUQ8R9527;
+						DevelopmentTeam = 7SRTN8TP29;
 						ProvisioningStyle = Automatic;
 					};
 					240D37F21EA70C0700E0EA3E = {
@@ -374,6 +380,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2417E6CC1EEA847900981C59 /* CRClientInfoView.xib in Resources */,
 				240D383B1EA74ECD00E0EA3E /* CRClientNameTableViewCell.xib in Resources */,
 				24F888811EA9EBBB00DBEEE8 /* CRInputViewController.xib in Resources */,
 				240D38331EA70D7400E0EA3E /* CRTableViewCell.xib in Resources */,
@@ -410,6 +417,7 @@
 				241BE4AA1EE2B3970055B6C1 /* Client+CoreDataProperties.swift in Sources */,
 				240D38561EA85DEE00E0EA3E /* HandleCoreData.swift in Sources */,
 				240D38581EA8954900E0EA3E /* CRClientInfoModel.swift in Sources */,
+				2417E6CA1EEA845D00981C59 /* CRClientInfoView.swift in Sources */,
 				241BE4A81EE29B0B0055B6C1 /* CRTableInfoModel.swift in Sources */,
 				240D383A1EA74ECD00E0EA3E /* CRClientNameTableViewCell.swift in Sources */,
 				240D37E81EA70C0700E0EA3E /* ClientRecords.xcdatamodeld in Sources */,
@@ -507,7 +515,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -552,7 +560,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -565,7 +573,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 8JUQ8R9527;
+				DEVELOPMENT_TEAM = 7SRTN8TP29;
 				INFOPLIST_FILE = ClientRecords/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -579,7 +587,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 8JUQ8R9527;
+				DEVELOPMENT_TEAM = 7SRTN8TP29;
 				INFOPLIST_FILE = ClientRecords/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

@@ -65,9 +65,34 @@ class CRClientInfoViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
+    //照片按钮点击
     @IBAction func clickAddCardBtn(_ sender: Any) {
-        print("clickAddCardBtn")
-        showImagePickerController(.camera)
+        // 1
+        let optionMenu = UIAlertController(title: nil, message: "请选择", preferredStyle: .actionSheet)
+        
+        // 2
+        let deleteAction = UIAlertAction(title: "拍照", style: .default, handler: {
+            (alert: UIAlertAction!) -> Void in
+            self.showImagePickerController(.camera)
+        })
+        let saveAction = UIAlertAction(title: "打开相册", style: .default, handler: {
+            (alert: UIAlertAction!) -> Void in
+            self.showImagePickerController(.photoLibrary)
+        })
+        
+        //
+        let cancelAction = UIAlertAction(title: "取消", style: .cancel, handler: {
+            (alert: UIAlertAction!) -> Void in
+            print("Cancelled")
+        })
+        
+        // 4
+        optionMenu.addAction(deleteAction)
+        optionMenu.addAction(saveAction)
+        optionMenu.addAction(cancelAction)
+        
+        // 5
+        self.present(optionMenu, animated: true, completion: nil)
     }
     
     //MARK: - 其他方法
@@ -207,7 +232,34 @@ class CRClientInfoViewController: UIViewController {
         }
     }
     
+    //MARK: - 保存照片后的回调方法
+    func didFinishSaveImageWithError(_ image: UIImage?, error: NSError?, contextInfo: AnyObject) {
+        if error == nil {
+            let alertController = UIAlertController(title: "保存成功!",
+                                                    message: nil, preferredStyle: .alert)
+            //显示提示框
+            self.present(alertController, animated: true, completion: nil)
+            //两秒钟后自动消失
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
+                self.presentedViewController?.dismiss(animated: false, completion: nil)
+
+            }
+        } else {
+            let alertController = UIAlertController(title: "保存失败!",
+                                                    message: nil, preferredStyle: .alert)
+            //显示提示框
+            self.present(alertController, animated: true, completion: nil)
+            //两秒钟后自动消失
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
+                self.presentedViewController?.dismiss(animated: false, completion: nil)
+            }
+        }
+    }
+    
+    //保存按钮点击
     func clickSave() {
+        self.view.endEditing(true)
+
         // 1
         let optionMenu = UIAlertController(title: nil, message: "请选择", preferredStyle: .actionSheet)
         
@@ -223,10 +275,10 @@ class CRClientInfoViewController: UIViewController {
                 print("保存信息")
             }
         })
-        let saveAction = UIAlertAction(title: "保存为图片", style: .default, handler: {
+        let saveAction = UIAlertAction(title: "保存信息为图片", style: .default, handler: {
             (alert: UIAlertAction!) -> Void in
             self.savePhoto()
-            print("保存为图片")
+            print("保存信息为图片")
         })
         
         //
@@ -245,8 +297,6 @@ class CRClientInfoViewController: UIViewController {
     }
     
     func updateClientInfo() {
-        self.view.endEditing(true)
-
         updateClient()
     }
     
@@ -288,14 +338,12 @@ class CRClientInfoViewController: UIViewController {
         //显示提示框
         self.present(alertController, animated: true, completion: nil)
         //两秒钟后自动消失
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
-            self.presentedViewController?.dismiss(animated: false, completion: nil)
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.8) {
+            self.presentedViewController?.dismiss(animated: false, completion: self.pop)
         }
     }
     
     func saveClientInfo() {
-        self.view.endEditing(true)
-        
         let imageData: NSData!
         
         if imageView.image != nil {
@@ -330,8 +378,8 @@ class CRClientInfoViewController: UIViewController {
             //显示提示框
             self.present(alertController, animated: true, completion: nil)
             //两秒钟后自动消失
-            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
-                self.presentedViewController?.dismiss(animated: false, completion: nil)
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.8) {
+                self.presentedViewController?.dismiss(animated: false, completion: self.pop)
             }
         //}
     }
@@ -499,16 +547,6 @@ class CRClientInfoViewController: UIViewController {
         ////TODO: - 不完整 目前仅保存了图片
         //保存照片
         UIImageWriteToSavedPhotosAlbum(imageView.image!, self, #selector(CRClientInfoViewController.didFinishSaveImageWithError(_:error:contextInfo:)), nil)
-    }
-    
-    //MARK: - 保存照片后的回调方法
-    func didFinishSaveImageWithError(_ image: UIImage?, error: NSError?, contextInfo: AnyObject) {
-        if error == nil {
-            //TODO: - hud
-            print("保存成功")
-        }else {
-            print("保存失败")
-        }
     }
 
     func pop() {
